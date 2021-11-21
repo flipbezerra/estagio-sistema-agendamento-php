@@ -1,0 +1,7 @@
+add lista
+add excluir e editar
+mudar add_event aviso de evento adicionado com sucesso
+verificar se está ocorrendo tratamento de erros
+
+dar credito cesar szpak + celke
+dar credito a fullcalendar
