@@ -1,6 +1,8 @@
-add lista
-add excluir e editar
-mudar add_event aviso de evento adicionado com sucesso
+adicionar lista de eventos
+adicionar exclusão e edição
+mudar mysql para mysqli e fazer ajustes para o mesmo
+verificar compatibilidade com o celular
+mudar no "add_event" o aviso de evento adicionado com sucesso
 verificar se está ocorrendo tratamento de erros
 
 dar credito cesar szpak + celke
