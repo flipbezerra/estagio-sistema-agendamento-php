@@ -37,7 +37,9 @@ session_start();
     ?>
     <div id="titulo">
         <h2>Agendamento de *espaço*</h2>
+        <hr>
     </div>
+
     <div id='calendar'></div>
     <div class="modal fade" id="visualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
