@@ -24,15 +24,15 @@ session_start();
 
 <body>
     <?php
-        if(isset($_SESSION['msg'])){
-            echo $_SESSION['msg'];
-            unset($_SESSION['msg']);
-        }
-        ?>
+    if (isset($_SESSION['msg'])) {
+        echo $_SESSION['msg'];
+        unset($_SESSION['msg']);
+    }
+    ?>
+
     <div id='calendar'></div>
 
-    <div class="modal fade" id="visualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="visualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -43,26 +43,81 @@ session_start();
                 </div>
 
                 <div class="modal-body">
-                    <dl class="row">
-                        <dt class="col-sm-3">ID do evento</dt>
-                        <dd class="col-sm-9" id="id"></dd>
+                    <div class="visevent">
+                        <dl class="row">
+                            <dt class="col-sm-3">ID do evento</dt>
+                            <dd class="col-sm-9" id="id"></dd>
 
-                        <dt class="col-sm-3">Título do evento</dt>
-                        <dd class="col-sm-9" id="title"></dd>
+                            <dt class="col-sm-3">Título do evento</dt>
+                            <dd class="col-sm-9" id="title"></dd>
 
-                        <dt class="col-sm-3">Início do evento</dt>
-                        <dd class="col-sm-9" id="start"></dd>
+                            <dt class="col-sm-3">Início do evento</dt>
+                            <dd class="col-sm-9" id="start"></dd>
 
-                        <dt class="col-sm-3">Fim do evento</dt>
-                        <dd class="col-sm-9" id="end"></dd>
-                    </dl>
+                            <dt class="col-sm-3">Fim do evento</dt>
+                            <dd class="col-sm-9" id="end"></dd>
+                        </dl>
+                        <button class="btn btn-warning btn-canc-vis">Editar</button>
+                    </div>
+                    <div class="formedit">
+                        <span id="msg-edit"></span>
+                        <form id="editevent" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="id" id="id">
+                            
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Título</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="title" class="form-control" id="title" placeholder="Título do evento">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Color</label>
+                                <div class="col-sm-10">
+                                    <select name="color" class="form-control" id="color">
+                                        <option value="">Selecione</option>
+                                        <option style="color:#FFD700;" value="#FFD700">Amarelo</option>
+                                        <option style="color:#0000FF;" value="#0000FF">Azul</option>
+                                        <option style="color:#808080;" value="#808080">Cinza</option>
+                                        <option style="color:#FFA500;" value="#FFA500">Laranja</option>
+                                        <option style="color:#8B4513;" value="#8B4513">Marrom</option>
+                                        <option style="color:#1C1C1C;" value="#1C1C1C">Preto</option>
+                                        <option style="color:#993399;" value="#993399">Roxo</option>
+                                        <option style="color:#40E0D0;" value="#40E0D0">Turquesa</option>
+                                        <option style="color:#228B22;" value="#228B22">Verde</option>
+                                        <option style="color:#FF0000;" value="#FF0000">Vermelho</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Início do evento</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="start" class="form-control" id="start" onkeypress="DataHora(event, this)">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Final do evento</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="end" class="form-control" id="end" onkeypress="DataHora(event, this)">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm-10">
+                                    <button type="button" class="btn btn-warning btn-canc-edit">Cancelar</button>
+                                    <button type="submit" name="AddEvent" id="AddEvent" value="AddEvent" class="btn btn-success">Cadastrar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="cadastrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="cadastrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -78,8 +133,7 @@ session_start();
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Título</label>
                             <div class="col-sm-10">
-                                <input type="text" name="title" class="form-control" id="title"
-                                    placeholder="Título do evento">
+                                <input type="text" name="title" class="form-control" id="title" placeholder="Título do evento">
                             </div>
                         </div>
 
@@ -105,23 +159,20 @@ session_start();
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Início do evento</label>
                             <div class="col-sm-10">
-                                <input type="text" name="start" class="form-control" id="start"
-                                    onkeypress="DataHora(event, this)">
+                                <input type="text" name="start" class="form-control" id="start" onkeypress="DataHora(event, this)">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Final do evento</label>
                             <div class="col-sm-10">
-                                <input type="text" name="end" class="form-control" id="end"
-                                    onkeypress="DataHora(event, this)">
+                                <input type="text" name="end" class="form-control" id="end" onkeypress="DataHora(event, this)">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-sm-10">
-                                <button type="submit" name="AddEvent" id="AddEvent" value="AddEvent"
-                                    class="btn btn-success">Cadastrar</button>
+                                <button type="submit" name="AddEvent" id="AddEvent" value="AddEvent" class="btn btn-success">Cadastrar</button>
                             </div>
                         </div>
                     </form>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include_once './conexao.php';
+include_once 'conexao.php';
 
 $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
@@ -20,10 +20,10 @@ $insert_event->bindParam(':start', $data_start_conv);
 $insert_event->bindParam(':end', $data_end_conv);
 
 if ($insert_event->execute()) {
-    $retorna = ['sit' => true, 'msg' => '<div class="alert alert-success" role="alert">aí sim pivete, salvou !!!</div>'];
-    $_SESSION['msg'] = '<div class="alert alert-success" role="alert">aí sim pivete, salvou !!!</div>';
+    $retorna = ['sit' => true, 'msg' => '<div class="alert alert-success" role="alert">Envento salvo com sucesso!</div>'];
+    $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Envento salvo com sucesso!</div>';
 } else {
-    $retorna = ['sit' => false, 'msg' => '<div class="alert alert-danger" role="alert">Erro: Evento não foi cadastrado com sucesso!</div>'];
+    $retorna = ['sit' => false, 'msg' => '<div class="alert alert-danger" role="alert">Erro: Evento não foi cadastrado!</div>'];
 }
 
 

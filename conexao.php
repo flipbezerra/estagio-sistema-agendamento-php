@@ -4,9 +4,10 @@
  * o código é aberto e o uso é free,
  * porém lembre-se de conceder os créditos ao desenvolvedor.
  */
-define('HOST', 'localhost');
-define('USER', 'root');
-define('PASS', '');
-define('DBNAME', 'celke');
+    define('HOST', 'localhost');
+    define('USER', 'root');
+    define('PASS', '');
+    define('DBNAME', 'celke');
 
-$conn = new PDO('mysql:host=' . HOST . ';dbname=' . DBNAME . ';', USER, PASS);
+    $conn = new PDO('mysql:host=' . HOST . ';dbname=' . DBNAME . ';', USER, PASS);
+?>
