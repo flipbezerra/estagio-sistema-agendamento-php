@@ -1,10 +1,4 @@
 <?php
-/**
-* @author Cesar Szpak - Celke - cesar@celke.com.br
-* @pagina desenvolvida usando FullCalendar e Bootstrap 4,
-* o código é aberto e o uso é free,
-* porém lembre-se de conceder os créditos ao desenvolvedor.
-*/
 session_start();
 
 include_once 'conexao.php';
@@ -17,7 +11,7 @@ $data_start_conv = date("Y-m-d H:i:s", strtotime($data_start));
 $data_end = str_replace('/', '-', $dados['end']);
 $data_end_conv = date("Y-m-d H:i:s", strtotime($data_end));
 
-$query_event = "INSERT INTO events (title, color, start, end, dataCadastro) VALUES (:title, :color, :start, :end, now())";
+$query_event = "INSERT INTO events (title, color, start, end) VALUES (:title, :color, :start, :end)";
 
 $insert_event = $conn->prepare($query_event);
 $insert_event->bindParam(':title', $dados['title']);
@@ -26,12 +20,11 @@ $insert_event->bindParam(':start', $data_start_conv);
 $insert_event->bindParam(':end', $data_end_conv);
 
 if ($insert_event->execute()) {
-    $retorna = ['sit' => true, 'msg' => '<div class="alert alert-success" role="alert">Envento salvo com sucesso!</div>'];
-    $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Envento salvo com sucesso!</div>';
+    $retorna = ['sit' => true, 'msg' => '<div class="alert alert-success" role="alert">Evento salvo com sucesso!</div>'];
+    $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Evento salvo com sucesso!</div>';
 } else {
     $retorna = ['sit' => false, 'msg' => '<div class="alert alert-danger" role="alert">Erro: Evento não foi cadastrado!</div>'];
 }
-
 
 header('Content-Type: application/json');
 echo json_encode($retorna);

@@ -1,10 +1,4 @@
 <?php
-/**
-* @author Cesar Szpak - Celke - cesar@celke.com.br
-* @pagina desenvolvida usando FullCalendar e Bootstrap 4,
-* o código é aberto e o uso é free,
-* porém lembre-se de conceder os créditos ao desenvolvedor.
-*/
 session_start();
 
 include_once 'conexao.php';
@@ -27,12 +21,11 @@ $update_event->bindParam(':end', $data_end_conv);
 $update_event->bindParam(':id', $dados['id']); 
 
 if ($update_event->execute()) {
-    $retorna = ['sit' => true, 'msg' => '<div class="alert alert-success" role="alert">Envento editado com sucesso!</div>'];
-    $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Envento editado com sucesso!</div>';
+    $retorna = ['sit' => true, 'msg' => '<div class="alert alert-success" role="alert">Evento editado com sucesso!</div>'];
+    $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Evento editado com sucesso!</div>';
 } else {
     $retorna = ['sit' => false, 'msg' => '<div class="alert alert-danger" role="alert">Erro: Evento não foi editado!</div>'];
 }
-
 
 header('Content-Type: application/json');
 echo json_encode($retorna);

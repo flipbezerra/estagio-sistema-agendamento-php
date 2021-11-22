@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
         editable: true,
         eventLimit: true,
         events: 'listar_eventos.php',
-        
+
         extraParams: function () {
             return {
                 cachebuster: new Date().valueOf()
@@ -87,18 +87,18 @@ $(document).ready(function () {
                 if (retorna['sit']) {
                     location.reload();
                 } else {
-                    $("#msg-cad").html(retorna['msg']);
+                    $("#msg-add").html(retorna['msg']);
                 }
             }
         })
     });
 
-    $('.btn-canc-vis').on("click", function(){
+    $('.btn-canc-vis').on("click", function () {
         $('.visevent').slideToggle();
         $('.formedit').slideToggle();
     })
 
-    $('.btn-canc-edit').on("click", function(){
+    $('.btn-canc-edit').on("click", function () {
         $('.formedit').slideToggle();
         $('.visevent').slideToggle();
     })

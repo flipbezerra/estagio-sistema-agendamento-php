@@ -1,9 +1,3 @@
-<!--  
-* @author Cesar Szpak - Celke - cesar@celke.com.br
-* @pagina desenvolvida usando FullCalendar e Bootstrap 4,
-* o código é aberto e o uso é free,
-* porém lembre-se de conceder os créditos ao desenvolvedor.
--->
 <?php
 session_start();
 ?>
@@ -37,11 +31,10 @@ session_start();
     ?>
     <div id="titulo">
         <h2>Agendamento de *espaço*</h2>
-        <hr>
     </div>
-
     <div id='calendar'></div>
-    <div class="modal fade" id="visualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="visualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -77,7 +70,8 @@ session_start();
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Título</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="title" class="form-control" id="title" placeholder="Título do evento">
+                                    <input type="text" name="title" class="form-control" id="title"
+                                        placeholder="Título do evento">
                                 </div>
                             </div>
 
@@ -91,7 +85,6 @@ session_start();
                                         <option style="color:#808080;" value="#808080">Cinza</option>
                                         <option style="color:#FFA500;" value="#FFA500">Laranja</option>
                                         <option style="color:#8B4513;" value="#8B4513">Marrom</option>
-                                        <option style="color:#1C1C1C;" value="#1C1C1C">Preto</option>
                                         <option style="color:#993399;" value="#993399">Roxo</option>
                                         <option style="color:#40E0D0;" value="#40E0D0">Turquesa</option>
                                         <option style="color:#228B22;" value="#228B22">Verde</option>
@@ -103,21 +96,24 @@ session_start();
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Início do evento</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="start" class="form-control" id="start" onkeypress="DataHora(event, this)">
+                                    <input type="text" name="start" class="form-control" id="start"
+                                        onkeypress="DataHora(event, this)">
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Final do evento</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="end" class="form-control" id="end" onkeypress="DataHora(event, this)">
+                                    <input type="text" name="end" class="form-control" id="end"
+                                        onkeypress="DataHora(event, this)">
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <div class="col-sm-10">
                                     <button type="button" class="btn btn-danger btn-canc-edit">Cancelar</button>
-                                    <button type="submit" name="AddEvent" id="AddEvent" value="AddEvent" class="btn btn-warning">Salvar</button>
+                                    <button type="submit" name="AddEvent" id="AddEvent" value="AddEvent"
+                                        class="btn btn-warning">Salvar</button>
                                 </div>
                             </div>
                         </form>
@@ -127,7 +123,8 @@ session_start();
         </div>
     </div>
 
-    <div class="modal fade" id="cadastrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="cadastrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -138,12 +135,13 @@ session_start();
                 </div>
 
                 <div class="modal-body">
-                    <span id="msg-cad"></span>
+                    <span id="msg-add"></span>
                     <form id="addevent" method="POST" enctype="multipart/form-data">
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Título</label>
                             <div class="col-sm-10">
-                                <input type="text" name="title" class="form-control" id="title" placeholder="Título do evento">
+                                <input type="text" name="title" class="form-control" id="title"
+                                    placeholder="Título do evento">
                             </div>
                         </div>
 
@@ -157,7 +155,6 @@ session_start();
                                     <option style="color:#808080;" value="#808080">Cinza</option>
                                     <option style="color:#FFA500;" value="#FFA500">Laranja</option>
                                     <option style="color:#8B4513;" value="#8B4513">Marrom</option>
-                                    <option style="color:#1C1C1C;" value="#1C1C1C">Preto</option>
                                     <option style="color:#993399;" value="#993399">Roxo</option>
                                     <option style="color:#40E0D0;" value="#40E0D0">Turquesa</option>
                                     <option style="color:#228B22;" value="#228B22">Verde</option>
@@ -169,20 +166,23 @@ session_start();
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Início do evento</label>
                             <div class="col-sm-10">
-                                <input type="text" name="start" class="form-control" id="start" onkeypress="DataHora(event, this)">
+                                <input type="text" name="start" class="form-control" id="start"
+                                    onkeypress="DataHora(event, this)">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Final do evento</label>
                             <div class="col-sm-10">
-                                <input type="text" name="end" class="form-control" id="end" onkeypress="DataHora(event, this)">
+                                <input type="text" name="end" class="form-control" id="end"
+                                    onkeypress="DataHora(event, this)">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-sm-10">
-                                <button type="submit" name="AddEvent" id="AddEvent" value="AddEvent" class="btn btn-success">Cadastrar</button>
+                                <button type="submit" name="AddEvent" id="AddEvent" value="AddEvent"
+                                    class="btn btn-success">Cadastrar</button>
                             </div>
                         </div>
                     </form>

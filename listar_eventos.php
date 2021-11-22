@@ -1,10 +1,4 @@
 <?php
-/**
-* @author Cesar Szpak - Celke - cesar@celke.com.br
-* @pagina desenvolvida usando FullCalendar e Bootstrap 4,
-* o código é aberto e o uso é free,
-* porém lembre-se de conceder os créditos ao desenvolvedor.
-*/
 include 'conexao.php';
 
 $query_events = "SELECT id, title, color, start, end FROM events";

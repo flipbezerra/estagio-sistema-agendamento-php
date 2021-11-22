@@ -14,7 +14,9 @@ body {
     max-width: 900px;
     margin: 0 auto;
 }
-.event
+.form-group{
+    color:white;
+}
 
 .visevent{
     display: block;
