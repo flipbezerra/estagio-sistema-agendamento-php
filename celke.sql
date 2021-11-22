@@ -33,7 +33,7 @@ CREATE TABLE `events` (
   `color` varchar(10) DEFAULT NULL,
   `start` datetime DEFAULT NULL,
   `end` datetime DEFAULT NULL,
-  `dataCadastro` datetime NOT NULL DEFAULT current_timestamp()
+  `dataCadastro` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

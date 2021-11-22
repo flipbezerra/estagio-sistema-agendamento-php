@@ -5,23 +5,25 @@ body {
     font-size: 14px;
     background-color: whitesmoke;
 }
+
 #titulo {
     text-align: center;
-    overflow:auto
+    overflow: auto
 }
 
 #calendar {
     max-width: 900px;
     margin: 0 auto;
 }
-.form-group{
-    color:white;
+
+.form-group {
+    color: white;
 }
 
-.visevent{
+.visevent {
     display: block;
 }
 
-.formedit{
+.formedit {
     display: none;
 }
