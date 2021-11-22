@@ -1,3 +1,2 @@
-add lista //não funcionando no meu pc
-add excluir
-verificar se está ocorrendo tratamento de erros
+> Verificar se está ocorrendo tratamento de erros
+> Deixar bonito porque né

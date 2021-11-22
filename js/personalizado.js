@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', function () {
         plugins: ['interaction', 'dayGrid'],
         editable: true,
         eventLimit: true,
-        events: 'list_eventos.php',
-
+        events: 'listar_eventos.php',
+        
         extraParams: function () {
             return {
                 cachebuster: new Date().valueOf()
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         eventClick: function (info) {
             info.jsEvent.preventDefault();
-
+            $("#apagar_evento").attr("href", "deletar_evento.php?id=" + info.event.id);
             $('#visualizar #id').text(info.event.id);
             $('#visualizar #id').val(info.event.id);
             $('#visualizar #title').text(info.event.title);
@@ -78,7 +78,7 @@ $(document).ready(function () {
         event.preventDefault();
         $.ajax({
             method: "POST",
-            url: "add_event.php",
+            url: "criar_evento.php",
             data: new FormData(this),
             contentType: false,
             processData: false,
@@ -107,7 +107,7 @@ $(document).ready(function () {
         event.preventDefault();
         $.ajax({
             method: "POST",
-            url: "edit_event.php",
+            url: "editar_evento.php",
             data: new FormData(this),
             contentType: false,
             processData: false,

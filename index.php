@@ -1,3 +1,9 @@
+<!--  
+* @author Cesar Szpak - Celke - cesar@celke.com.br
+* @pagina desenvolvida usando FullCalendar e Bootstrap 4,
+* o código é aberto e o uso é free,
+* porém lembre-se de conceder os créditos ao desenvolvedor.
+-->
 <?php
 session_start();
 ?>
@@ -29,9 +35,10 @@ session_start();
         unset($_SESSION['msg']);
     }
     ?>
-
+    <div id="titulo">
+        <h2>Agendamento de *espaço*</h2>
+    </div>
     <div id='calendar'></div>
-
     <div class="modal fade" id="visualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -58,12 +65,13 @@ session_start();
                             <dd class="col-sm-9" id="end"></dd>
                         </dl>
                         <button class="btn btn-warning btn-canc-vis">Editar</button>
+                        <a href="" id="apagar_evento" class="btn btn-danger">Apagar</a>
                     </div>
                     <div class="formedit">
                         <span id="msg-edit"></span>
                         <form id="editevent" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="id" id="id">
-                            
+
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Título</label>
                                 <div class="col-sm-10">
@@ -106,8 +114,8 @@ session_start();
 
                             <div class="form-group row">
                                 <div class="col-sm-10">
-                                    <button type="button" class="btn btn-warning btn-canc-edit">Cancelar</button>
-                                    <button type="submit" name="AddEvent" id="AddEvent" value="AddEvent" class="btn btn-success">Cadastrar</button>
+                                    <button type="button" class="btn btn-danger btn-canc-edit">Cancelar</button>
+                                    <button type="submit" name="AddEvent" id="AddEvent" value="AddEvent" class="btn btn-warning">Salvar</button>
                                 </div>
                             </div>
                         </form>
