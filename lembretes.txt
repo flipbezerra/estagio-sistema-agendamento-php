@@ -1,7 +1,6 @@
 adicionar menu
 adicionar lista de eventos
 mudar mysql para mysqli e fazer ajustes para o mesmo
-
 fazer verificação de conflito de horario
 verificar compatibilidade com o celular
 tratamento de erros
