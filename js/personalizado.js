@@ -3,8 +3,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
         locale: 'pt-br',
+        header: {
+            left: 'prev,next',
+            center: 'title',
+            right: 'today,dayGridMonth,listYear' //listYear não funciona
+        },
         plugins: ['interaction', 'dayGrid'],
-        editable: true,
+        //editable: true,
         eventLimit: true,
         events: 'listar_eventos.php',
         eventTextColor: "#ffffff",
@@ -34,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
             $('#visualizar #color').val(info.event.backgroundColor);
             $('#visualizar').modal('show');
         },
+        default: 100, //teste de delay
 
         selectable: true,
         select: function (info) {
