@@ -5,11 +5,11 @@ include_once 'conexao.php';
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
-if(!empty($id)) {
+if (!empty($id)) {
     $query_event = "DELETE FROM events WHERE id=:id";
     $delete_event = $conn->prepare($query_event);
     $delete_event->bindParam('id', $id);
-    if($delete_event->execute()) {
+    if ($delete_event->execute()) {
         $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Evento deletado com sucesso!</div>';
         header("Location: index.php");
     } else {
@@ -20,3 +20,4 @@ if(!empty($id)) {
     $_SESSION['msg'] = '<div class="alert alert-danger" role="alert">Evento não deletado!</div>';
     header("Location: index.php");
 }
+?>
