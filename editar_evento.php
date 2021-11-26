@@ -12,6 +12,14 @@
     $sqlUpdate = "UPDATE events SET title='".$title."', start='".$start."', end='".$end."' WHERE id=" . $id;
     mysqli_query($conn, $sqlUpdate)
     mysqli_close($conn);
+
+    
+    exemplo
+        if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+        }
+        echo "Connected successfully";
+
 */
 
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
