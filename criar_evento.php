@@ -26,10 +26,6 @@
         $retorna = ['sit' => false, 'msg' => '<div class="alert alert-danger" role="alert">Erro: Evento não foi cadastrado!</div>'];
     }
 
-<<<<<<< HEAD
-header('Content-Type: application/json');
-echo json_encode($retorna);
-=======
     header('Content-Type: application/json');
     echo json_encode($retorna);
 
@@ -50,5 +46,4 @@ echo json_encode($retorna);
     }
 */
 
->>>>>>> 4a85b48d92b7e76add88155730050076a8e589cc
 ?>
