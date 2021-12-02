@@ -6,10 +6,9 @@ document.addEventListener('DOMContentLoaded', function () {
         header: {
             left: 'prev,next',
             center: 'title',
-            right: 'today,dayGridMonth,listYear' //listYear não funciona
+            right: 'today'
         },
         plugins: ['interaction', 'dayGrid'],
-        //editable: true,
         eventLimit: true,
         events: 'listar_eventos.php',
 
@@ -33,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
             $('#visualizar #color').val(info.event.backgroundColor);
             $('#visualizar').modal('show');
         },
-        default: 100, //teste de delay
 
         selectable: true,
         select: function (info) {
@@ -127,4 +125,8 @@ $(document).ready(function () {
             }
         })
     });
+
+    setTimeout(function() {
+    $('#alert').fadeOut('fast');
+    }, 5000); // <-- time in mseconds
 });

@@ -1,4 +1,5 @@
 <?php
+
     session_start();
 
     include_once 'conexao.php';
@@ -11,15 +12,11 @@
     $data_end = str_replace('/', '-', $dados['end']);
     $data_end_conv = date("Y-m-d H:i:s", strtotime($data_end));
 
-    $query_event = "INSERT INTO events (title, color, start, end, dataCadastro) VALUES (:title, :color, :start, :end, now())";
+    $query = "INSERT INTO events (title, color, start, end, dataCadastro) VALUES (?, ?, ?, ?, now())";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "ssss", $dados['title'], $dados['color'], $data_start_conv, $data_end_conv);
 
-    $insert_event = $conn->prepare($query_event);
-    $insert_event->bindParam(':title', $dados['title']);
-    $insert_event->bindParam(':color', $dados['color']);
-    $insert_event->bindParam(':start', $data_start_conv);
-    $insert_event->bindParam(':end', $data_end_conv);
-
-    if ($insert_event->execute()) {
+    if ($stmt->execute()) {
         $retorna = ['sit' => true, 'msg' => '<div class="alert alert-success" role="alert">Evento salvo com sucesso!</div>'];
         $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Evento salvo com sucesso!</div>';
     } else {
@@ -28,22 +25,5 @@
 
     header('Content-Type: application/json');
     echo json_encode($retorna);
-
-/*  
-    //em andamento
-    require_once "db.php";
-
-    $title = isset($_POST['title']) ? $_POST['title'] : "";
-    $start = isset($_POST['start']) ? $_POST['start'] : "";
-    $end = isset($_POST['end']) ? $_POST['end'] : "";
-
-    $sqlInsert = "INSERT INTO tbl_events (title,start,end) VALUES ('".$title."','".$start."','".$end ."')";
-
-    $result = mysqli_query($conn, $sqlInsert);
-
-    if (! $result) {
-        $result = mysqli_error($conn);
-    }
-*/
 
 ?>

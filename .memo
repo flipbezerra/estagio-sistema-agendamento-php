@@ -1,11 +1,6 @@
-adicionar datetime nos horarios
-mudar mysql para mysqli e fazer ajustes para o mesmo
-
-adicionar lista de eventos
-fazer verificação de conflito de horario
-verificar compatibilidade com o celular
-tratamento de erros
-administração em niveis
-
-dar credito cesar szpak + celke
-dar credito a fullcalendar
+>Adicionar datetime nos horários para verificação de conflito de horário
+>Verificar compatibilidade com o celular
+>Tratamento de erros
+>Administração em niveis
+>Dar credito a Celke (Criação da estrutura básica e modais)
+>Dar credito a Fullcalendar
