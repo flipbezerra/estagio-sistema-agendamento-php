@@ -1,6 +1,7 @@
 <?php
-/*  //funcional
-    
+
+/* 
+	//fred server
     $host = 'localhost';
     $user = 'root';
     $password = 'fred123456';

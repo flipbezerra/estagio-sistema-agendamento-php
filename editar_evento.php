@@ -28,22 +28,4 @@
     header('Content-Type: application/json');
     echo json_encode($retorna);
 
-/*  /* em andamento */
-    $id = $_POST['id'];
-    $title = $_POST['title'];
-    $start = $_POST['start'];
-    $end = $_POST['end'];
-
-    $sqlUpdate = "UPDATE events SET title='".$title."', start='".$start."', end='".$end."' WHERE id=" . $id;
-    mysqli_query($conn, $sqlUpdate)
-    mysqli_close($conn);
-
-    
-    exemplo
-        if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-        }
-        echo "Connected successfully";
-*/
-
 ?>
