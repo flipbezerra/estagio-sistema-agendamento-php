@@ -6,8 +6,6 @@
     $password = 'fred123456';
     $db_name = 'projetoDois';
     $port = 21022;
-
-    $conn = mysqli_connect($host, $user, $password, $db_name, $port);
 */
     $host = 'localhost';
     $user = 'root';
