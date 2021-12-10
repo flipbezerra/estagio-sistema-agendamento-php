@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
             $('#visualizar #end').val(info.event.end.toLocaleString());
             $('#visualizar #color').val(info.event.backgroundColor);
             $('#visualizar').modal('show');
-        }
+        },
     });
 
     calendar.render();
@@ -129,6 +129,7 @@ $(document).ready(function () {
             }
         })
     });
-
-    setTimeout(function () { $('#alert').fadeOut('fast'); }, 5000); /* <-- time in mseconds */
+    $(".alert").fadeTo(3000, 500).slideUp(500, function(){
+        $(".alert").alert('close');
+    });
 });

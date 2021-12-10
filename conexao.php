@@ -1,5 +1,4 @@
 <?php
-
 /* 
 	//fred server
     $host = 'localhost';
