@@ -5,12 +5,14 @@
 <html>
     <head>
         <meta charset='utf-8' />
+        <title>Sistema de agendamentos - UFAC</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <link href='css/core.css' rel='stylesheet' />
         <link href='css/daygrid.css' rel='stylesheet' />
         <link href='css/daygrid.css' rel='stylesheet' />
         <link href='css/list.css' rel='stylesheet' />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="shortcut icon" type="image/x-icon" href="https://sistemas.ufac.br/home/wp-content/themes/sistemas/staticIndex/imagens/logo_ufac.gif">
         <link href="css/personalizado.css" rel="stylesheet">
 
         <script src='js/core.js'></script>
@@ -22,6 +24,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
         <script src="js/personalizado.js"></script>
     </head>
     <body>
@@ -31,7 +35,44 @@
             unset($_SESSION['msg']);
         }
         ?>
-        <div id='calendar'></div>
+        <div class="wrapper">
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                    <img id="logo" src="resources/ufac.png" alt="logo">
+                    <br>
+                    <h3>Agendamento de espaços</h3>
+                </div>
+                <ul class="list-unstyled components">
+                    <p>Universidade Federal do Acre</p>
+                    <li>
+                        <a href="index.php"><i class="fa fa-home"></i> Página Inicial</a>
+                    </li>
+                    <li class="active">
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-map"></i> Espaços</a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li>
+                                <a href="#"><span class="dot" style="background-color:#FFD700"></span> Auditórios</a>
+                            </li>
+                            <li>
+                                <a href="#"><span class="dot" style="background-color:#0000FF"></span> Piscinas</a>
+                            </li>
+                            <li>
+                                <a href="#"><span class="dot" style="background-color:#FFA500"></span> Quadras</a>
+                            </li>
+                            <li>
+                                <a href="#"><span class="dot" style="background-color:#228B22"></span> Laboratórios</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--<li>
+                        <a href="#">Contato</a>
+                    </li>-->
+                </ul>
+            </nav>
+            <div id="content">
+                <div id='calendar'></div>
+            </div>
+        </div>
         <div class="modal fade" id="visualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
