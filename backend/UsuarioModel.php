@@ -1,5 +1,4 @@
 <?php
-
     class UsuarioModel{
         private $conexao;
         public function __construct($conexao){          
@@ -26,5 +25,4 @@
             return $obj;
         }
     }
-
 ?>

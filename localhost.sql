@@ -34,11 +34,14 @@ CREATE TABLE `events` (
 --
 -- Estrutura para tabela `usuários`
 --
-CREATE TABLE `usuarios` (
+CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
-  `usuario` varchar(30) NOT NULL,
-  `senha` varchar(30) NOT NULL,
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `usuario` text COLLATE utf8_unicode_ci NOT NULL,
+  `senha` text COLLATE utf8_unicode_ci NOT NULL,
+  `permicao` int(1) NOT NULL,
+  `ativado` tinyint(1) NOT NULL,
+  `data_cadastro` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 --
 -- Despejando dados para a tabela `events`
 --
@@ -47,16 +50,25 @@ INSERT INTO `events` (`id`, `title`, `color`, `start`, `end`, `dataCadastro`) VA
 --
 -- Despejando dados para a tabela `usuários`
 --
-INSERT INTO `usuarios` (`id`, `usuario`, `senha`) VALUES
-(1, 'admin@admin.com', 'admin');
+INSERT INTO `usuarios` (`id`, `usuario`, `senha`, `permicao`, `ativado`, `data_cadastro`) VALUES
+(1, 'admin@admin.com', 'admin', 0, 0, now());
 --
 -- Índice da tabela `events`
 --
 ALTER TABLE `events` ADD PRIMARY KEY (`id`);
 --
+-- Índice da tabela `usuários`
+--
+ALTER TABLE `usuario` ADD PRIMARY KEY (`id`);
+--
 -- Auto incrementação de tabela `events`
 --
 ALTER TABLE `events` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+--
+-- AUTO_INCREMENT de tabela `usuario`
+--
+ALTER TABLE `usuario` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

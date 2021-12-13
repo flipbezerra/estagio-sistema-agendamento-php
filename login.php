@@ -1,11 +1,8 @@
 <?php
-    include "back-end/conexao.php";
-
+    include "./backend/conexao.php";
     session_start();
-
     if(isset($_SESSION['usuario'])){
-
-        header("Location: ./pages/admin");
+        header("Location: .");
     }
 ?>
 <!doctype html>
@@ -21,7 +18,7 @@
         <link rel="shortcut icon" type="image/x-icon" href="https://sistemas.ufac.br/home/wp-content/themes/sistemas/staticIndex/imagens/logo_ufac.gif">
         <link rel="stylesheet" href="css/personalizado.css" >
     </head>
-    <body class="body-login" id="login">
+    <body class="body-login">
         <div class="area">
             <div class="area-logo">
 
@@ -41,10 +38,8 @@
 
                         <label for="">Senha</label>
                         <input type="password" name="senha" class="form-control" placeholder="Senha">
-
                         <?php
                             if (isset($_GET['erro'])) {
-
                                 if ($_GET['erro'] == 1) {
                         ?>
                                 <div class="alert alert-danger mt-3 alert-dismissible">
@@ -55,10 +50,9 @@
                                 }
                             }
                         ?>
-
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary mt-5">
-                                Logar
+                                Entrar
                                 <i class="fas fa-sign-in-alt"></i>
                             </button>
                         </div>

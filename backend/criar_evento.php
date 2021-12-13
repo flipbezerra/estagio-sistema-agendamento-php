@@ -1,9 +1,6 @@
 <?php
-
     session_start();
-
-    include_once 'conexao.php';
-
+    include_once "conexao.php";
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
     /* Conversão - data/hora do formato brasileiro para o formato do Banco de Dados */
@@ -26,5 +23,4 @@
 
     header('Content-Type: application/json');
     echo json_encode($retorna);
-
 ?>

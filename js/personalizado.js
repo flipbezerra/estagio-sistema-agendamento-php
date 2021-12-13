@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         eventLimit: true,
 
-        events: 'listar_eventos.php',
+        events: 'backend/listar_eventos.php',
         extraParams: function () {
             return {
                 cachebuster: new Date().valueOf()
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         eventClick: function (info) {
             info.jsEvent.preventDefault();
-            $("#apagar_evento").attr("href", "deletar_evento.php?id=" + info.event.id);
+            $("#apagar_evento").attr("href", "backend/deletar_evento.php?id=" + info.event.id);
             $('#visualizar #id').text(info.event.id);
             $('#visualizar #id').val(info.event.id);
             $('#visualizar #title').text(info.event.title);
@@ -86,7 +86,7 @@ $(document).ready(function () {
         event.preventDefault();
         $.ajax({
             method: "POST",
-            url: "criar_evento.php",
+            url: "backend/criar_evento.php",
             data: new FormData(this),
             contentType: false,
             processData: false,
@@ -115,7 +115,7 @@ $(document).ready(function () {
         event.preventDefault();
         $.ajax({
             method: "POST",
-            url: "editar_evento.php",
+            url: "backend/editar_evento.php",
             data: new FormData(this),
             contentType: false,
             processData: false,

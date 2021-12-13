@@ -1,5 +1,13 @@
 <?php
+    require_once './backend/conexao.php';
+
+    //iniciando sessão se existir
     session_start();
+
+    //verificar login, se não existe voltar para login
+    if(!isset($_SESSION['usuario'])):
+        header('Location: login.php');
+    endif;
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -20,7 +28,7 @@
         <link rel="shortcut icon" type="image/x-icon" href="https://sistemas.ufac.br/home/wp-content/themes/sistemas/staticIndex/imagens/logo_ufac.gif">
         <link href='css/personalizado.css' rel='stylesheet' >
     </head>
-    <body id="homepage">
+    <body>
         <?php
         if (isset($_SESSION['msg'])) {
             echo $_SESSION['msg'];
@@ -38,6 +46,9 @@
                     <p>Universidade Federal do Acre</p>
                     <li>
                         <a href="index.php"><i class="fa fa-home"></i> Página Inicial</a>
+                    </li>
+                    <li>
+                        <a href="login.php"><i class="fa fa-user"></i> Login</a>
                     </li>
                     <li class="active">
                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-map"></i> Espaços</a>

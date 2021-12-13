@@ -1,13 +1,12 @@
->Adicionar datetime nos horários para verificação de conflito de horário
->mysql para mysqli + ajustes
->Verificar compatibilidade com o celular
 >Tratamento de erros
->Administração em niveis
->Dar credito a Celke/Cesar Szpak (Criação da estrutura básica e modais)
->Dar credito a Fullcalendar
+>Administração em niveis (em andamento)
 
-tratamento de erros: 
+Tratamento de erros: 
 obrigar usuario a inserir todos os dados obrigatorios
 apagar ou editar evento já apagado; 
 não inclusão de mudanças ou adições de eventos
 impedir usuarios de nivel baixo modificar eventos
+
+Conta administrador:
+usuário: admin@admin.com
+senha: admin
