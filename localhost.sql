@@ -32,10 +32,23 @@ CREATE TABLE `events` (
   `dataCadastro` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 --
+-- Estrutura para tabela `usuários`
+--
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `usuario` varchar(30) NOT NULL,
+  `senha` varchar(30) NOT NULL,
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+--
 -- Despejando dados para a tabela `events`
 --
 INSERT INTO `events` (`id`, `title`, `color`, `start`, `end`, `dataCadastro`) VALUES
 (1, 'Teste', '#FFD700', '2021-11-15 00:00:00', '2021-11-16 00:00:00', now());
+--
+-- Despejando dados para a tabela `usuários`
+--
+INSERT INTO `usuarios` (`id`, `usuario`, `senha`) VALUES
+(1, 'admin@admin.com', 'admin');
 --
 -- Índice da tabela `events`
 --
