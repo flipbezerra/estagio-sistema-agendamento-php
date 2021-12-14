@@ -1,12 +1,26 @@
->Tratamento de erros
->Administração em niveis (em andamento)
-
-Tratamento de erros: 
-obrigar usuario a inserir todos os dados obrigatorios
-apagar ou editar evento já apagado; 
-não inclusão de mudanças ou adições de eventos
-impedir usuarios de nivel baixo modificar eventos
-
-Conta administrador:
+Conta Administrador:
 usuário: admin@admin.com
 senha: admin
+
+
+
+>Erros 
+>Administração em niveis (em andamento) 
+>Comentar 
+
+
+
+-Correção de erros
+cor e datas do evento existente não aparecem no editar
+avisos aparecem por baixo do layout
+
+-Tratamento de erros: 
+apagar ou editar evento já apagado
+não inclusão de mudanças ou adições de eventos
+impedir usuarios de nivel baixo modificar eventos (em andamento) 
+
+-Comentarios faltando:
+arquivos do backend 
+personalizado.js 
+personalizado.css 
+
