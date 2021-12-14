@@ -4,8 +4,7 @@
     session_start();
 
     if(isset($_SESSION['usuario'])){
-        //adicionar pagina do usuario
-        header("Location: .");
+        header("Location: ./");
     }
 
     $usuario = $_POST['usuario'];
