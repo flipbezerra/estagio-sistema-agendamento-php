@@ -3,13 +3,8 @@
     session_start();
     
     include_once "conexao.php";
-<<<<<<< HEAD
-
-    $dados = filter_input_array(INPUT_POST);
-=======
     
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
->>>>>>> 36fd29b403d3d6ff8decc3d1140d9c2182d0c74e
     /* Conversão - data/hora do formato brasileiro para o formato do Banco de Dados */
     $data_start_conv = date("Y-m-d H:i:s", strtotime($dados['start']));
     $data_end_conv = date("Y-m-d H:i:s", strtotime($dados['end']));

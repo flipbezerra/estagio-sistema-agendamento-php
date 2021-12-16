@@ -12,13 +12,8 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         selectable: true,
         eventLimit: true,
-<<<<<<< HEAD
         events: 'backend/listar_eventos.php',
 
-=======
-
-        events: './backend/listar_eventos.php',
->>>>>>> 36fd29b403d3d6ff8decc3d1140d9c2182d0c74e
         extraParams: function () {
             return {
                 cachebuster: new Date().valueOf()
@@ -49,8 +44,6 @@ document.addEventListener('DOMContentLoaded', function () {
     calendar.render();
 });
 
-<<<<<<< HEAD
-=======
 /* Mascara - valores de data/hora */
 function DataHora(evento, objeto) {
     var keypress = (window.event) ? event.keyCode : evento.which;
@@ -85,7 +78,6 @@ function DataHora(evento, objeto) {
     }
 }
 
->>>>>>> 36fd29b403d3d6ff8decc3d1140d9c2182d0c74e
 $(document).ready(function () {
     $("#addevent").on("submit", function (event) {
         event.preventDefault();
@@ -134,7 +126,6 @@ $(document).ready(function () {
             }
         })
     });
-<<<<<<< HEAD
 
     $("#sidebar").mCustomScrollbar({
         theme: "minimal"
@@ -147,9 +138,6 @@ $(document).ready(function () {
     });
 
     $(".alert").fadeTo(3000, 500).slideUp(500, function(){
-=======
-    $(".alert").fadeTo(3000, 500).slideUp(500, function () {
->>>>>>> 36fd29b403d3d6ff8decc3d1140d9c2182d0c74e
         $(".alert").alert('close');
     });
 });

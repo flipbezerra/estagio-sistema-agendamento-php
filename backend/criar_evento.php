@@ -1,14 +1,9 @@
 <?php
     /* Iniciando sessão */
     session_start();
-<<<<<<< HEAD
-    require_once "conexao.php";
-
-=======
     
     include_once "conexao.php";
     
->>>>>>> 36fd29b403d3d6ff8decc3d1140d9c2182d0c74e
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
     /* Conversão - data/hora do formato brasileiro para o formato do Banco de Dados */
     $data_start_conv = date("Y-m-d H:i:s", strtotime($dados['start']));
