@@ -25,33 +25,34 @@ USE `projetoDois`;
 --
 CREATE TABLE `events` (
   `id` int(11) NOT NULL,
-  `title` varchar(150) NOT NULL,
+  `title` varchar(30) NOT NULL,
   `color` varchar(15) NOT NULL,
   `start` datetime NOT NULL,
   `end` datetime NOT NULL,
+  `status` boolean NOT NULL,
+  `descricao` varchar(100) NOT NULL,
   `dataCadastro` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 --
--- Estrutura para tabela `usuários`
+-- Estrutura para tabela `usuário`
 --
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
   `usuario` text COLLATE utf8_unicode_ci NOT NULL,
   `senha` text COLLATE utf8_unicode_ci NOT NULL,
-  `permicao` int(1) NOT NULL,
   `ativado` tinyint(1) NOT NULL,
-  `data_cadastro` datetime NOT NULL
+  `dataCadastro` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 --
 -- Despejando dados para a tabela `events`
 --
-INSERT INTO `events` (`id`, `title`, `color`, `start`, `end`, `dataCadastro`) VALUES
-(1, 'Teste', '#FFD700', '2021-11-15 00:00:00', '2021-11-16 00:00:00', now());
+INSERT INTO `events` (`id`, `title`, `color`, `start`, `end`, `status`, `descricao`, `dataCadastro`) VALUES
+(1, 'Quadra coberta', '#FFD700', '2021-12-15 00:00:00', '2021-12-16 00:00:00', false, '20180300012, Basquete com os alunos de SI.', now());
 --
 -- Despejando dados para a tabela `usuários`
 --
-INSERT INTO `usuarios` (`id`, `usuario`, `senha`, `permicao`, `ativado`, `data_cadastro`) VALUES
-(1, 'admin@admin.com', 'admin', 0, 0, now());
+INSERT INTO `usuario` (`id`, `usuario`, `senha`, `ativado`, `dataCadastro`) VALUES
+(1, 'admin@admin.com', 'admin', 0, now());
 --
 -- Índice da tabela `events`
 --

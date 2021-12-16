@@ -1,11 +1,12 @@
 <?php
     include "conexao.php";
     include "UsuarioModel.php";
+    
     session_start();
 
     if(isset($_SESSION['usuario'])){
         //adicionar pagina do usuario
-        header("Location: .");
+        header("Location: ../index_aut.php");
     }
 
     $usuario = $_POST['usuario'];
