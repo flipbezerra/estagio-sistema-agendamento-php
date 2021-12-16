@@ -12,8 +12,13 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         selectable: true,
         eventLimit: true,
+<<<<<<< HEAD
         events: 'backend/listar_eventos.php',
 
+=======
+
+        events: './backend/listar_eventos.php',
+>>>>>>> 36fd29b403d3d6ff8decc3d1140d9c2182d0c74e
         extraParams: function () {
             return {
                 cachebuster: new Date().valueOf()
@@ -28,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         eventClick: function (info) {
             info.jsEvent.preventDefault();
-            $("#apagar_evento").attr("href", "backend/deletar_evento.php?id=" + info.event.id);
+            $("#apagar_evento").attr("href", "./backend/deletar_evento.php?id=" + info.event.id);
             $('#visualizar #id').text(info.event.id);
             $('#visualizar #id').val(info.event.id);
             $('#visualizar #title').text(info.event.title);
@@ -44,12 +49,49 @@ document.addEventListener('DOMContentLoaded', function () {
     calendar.render();
 });
 
+<<<<<<< HEAD
+=======
+/* Mascara - valores de data/hora */
+function DataHora(evento, objeto) {
+    var keypress = (window.event) ? event.keyCode : evento.which;
+    campo = eval(objeto);
+    if (campo.value == '00/00/0000 00:00:00') {
+        campo.value = "";
+    }
+
+    caracteres = '0123456789';
+    separacao1 = '/';
+    separacao2 = ' ';
+    separacao3 = ':';
+    conjunto1 = 2;
+    conjunto2 = 5;
+    conjunto3 = 10;
+    conjunto4 = 13;
+    conjunto5 = 16;
+
+    if ((caracteres.search(String.fromCharCode(keypress)) != -1) && campo.value.length < (19)) {
+        if (campo.value.length == conjunto1)
+            campo.value = campo.value + separacao1;
+        else if (campo.value.length == conjunto2)
+            campo.value = campo.value + separacao1;
+        else if (campo.value.length == conjunto3)
+            campo.value = campo.value + separacao2;
+        else if (campo.value.length == conjunto4)
+            campo.value = campo.value + separacao3;
+        else if (campo.value.length == conjunto5)
+            campo.value = campo.value + separacao3;
+    } else {
+        event.returnValue = false;
+    }
+}
+
+>>>>>>> 36fd29b403d3d6ff8decc3d1140d9c2182d0c74e
 $(document).ready(function () {
     $("#addevent").on("submit", function (event) {
         event.preventDefault();
         $.ajax({
             method: "POST",
-            url: "backend/criar_evento.php",
+            url: "./backend/criar_evento.php",
             data: new FormData(this),
             contentType: false,
             processData: false,
@@ -78,7 +120,7 @@ $(document).ready(function () {
         event.preventDefault();
         $.ajax({
             method: "POST",
-            url: "backend/editar_evento.php",
+            url: "./backend/editar_evento.php",
             data: new FormData(this),
             contentType: false,
             processData: false,
@@ -92,6 +134,7 @@ $(document).ready(function () {
             }
         })
     });
+<<<<<<< HEAD
 
     $("#sidebar").mCustomScrollbar({
         theme: "minimal"
@@ -104,6 +147,9 @@ $(document).ready(function () {
     });
 
     $(".alert").fadeTo(3000, 500).slideUp(500, function(){
+=======
+    $(".alert").fadeTo(3000, 500).slideUp(500, function () {
+>>>>>>> 36fd29b403d3d6ff8decc3d1140d9c2182d0c74e
         $(".alert").alert('close');
     });
 });

@@ -1,7 +1,14 @@
 <?php
+    /* Iniciando sessão */
     session_start();
+<<<<<<< HEAD
     require_once "conexao.php";
 
+=======
+    
+    include_once "conexao.php";
+    
+>>>>>>> 36fd29b403d3d6ff8decc3d1140d9c2182d0c74e
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
     /* Conversão - data/hora do formato brasileiro para o formato do Banco de Dados */
     $data_start_conv = date("Y-m-d H:i:s", strtotime($dados['start']));
@@ -11,14 +18,13 @@
     $stmt = mysqli_prepare($conn, $query);
     mysqli_stmt_bind_param($stmt, "ssss", $dados['title'], $data_start_conv, $data_end_conv, $dados['descricao']);
 
-    if ($stmt->execute()) {
-        $retorna = ['sit' => true, 'msg' => '<div class="alert alert-success" role="alert">Evento criado com sucesso!
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'];
-        $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Evento criado com sucesso!
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
-    } else {
-        $retorna = ['sit' => false, 'msg' => '<div class="alert alert-success" role="alert">Erro na criação do evento.
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'];
+    if ($stmt->execute()) 
+    {
+        $retorna = ['sit' => true, 'msg' => '<div class="alert alert-success" role="alert">Evento criado com sucesso! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'];
+        $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Evento criado com sucesso! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+    } else 
+    {
+        $retorna = ['sit' => false, 'msg' => '<div class="alert alert-success" role="alert">Erro na criação do evento. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'];
     }
 
     header('Content-Type: application/json');
