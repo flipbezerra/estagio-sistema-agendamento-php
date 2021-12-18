@@ -65,6 +65,7 @@
                                     <a href="#"> Laboratórios</a>
                                 </li>
                             </ul>
+                        </li>
                         <li id="logout">
                             <a href="backend/logout.php"><i class="fas fa-sign-out-alt"></i> Sair</a>
                         </li>
@@ -73,9 +74,7 @@
                 <div id="content">
                     <nav class="navbar navbar-expand-lg">
                         <div class="container-fluid">
-                            <button type="button" id="sidebarCollapse" class="btn btn-primary">
-                                <i class="fas fa-bars"></i>
-                            </button>
+                            <button type="button" id="sidebarCollapse" class="btn btn-primary"><i class="fas fa-bars"></i> Menu</button>
                         </div>
                     </nav>
                     <div id='calendar'></div>
@@ -84,12 +83,6 @@
             <div class="modal fade" id="visualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
-                        <?php
-                            include 'backend/conexao.php';
-                            $query_listar = "SELECT * FROM events";
-                            $buscar_events = mysqli_query($conn, $query_listar);
-                            while ($retorno_events = mysqli_fetch_array($buscar_events)) {
-                        ?>
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Detalhes da solicitação</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -111,6 +104,12 @@
                                 <button class="btn btn-warning btn-canc-vis">Ver solicitação</button>
                                 <a href="" id="apagar_evento" class="btn btn-danger">Apagar</a>
                             </div>
+                            <?php
+                                include 'backend/conexao.php';
+                                $query_listar = "SELECT * FROM events";
+                                $buscar_events = mysqli_query($conn, $query_listar);
+                                while ($retorno_events = mysqli_fetch_array($buscar_events)) {
+                            ?>
                             <div class="formedit">
                                 <span id="msg-edit"></span>
                                 <form id="editevent" method="POST" enctype="multipart/form-data">
@@ -160,10 +159,10 @@
                                     </div>
                                 </form>
                             </div>
+                            <?php
+                                } 
+                            ?>
                         </div>
-                        <?php
-                            } 
-                        ?>
                     </div>
                 </div>
             </div>

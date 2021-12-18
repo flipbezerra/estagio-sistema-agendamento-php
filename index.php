@@ -2,6 +2,9 @@
     require_once './backend/conexao.php';
     //iniciando sessão se existir
     session_start();
+    if(isset($_SESSION['usuario'])):
+        header('Location: index_aut.php');
+    endif;
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -70,9 +73,7 @@
                 <div id="content">
                     <nav class="navbar navbar-expand-lg">
                         <div class="container-fluid">
-                            <button type="button" id="sidebarCollapse" class="btn btn-primary">
-                                <i class="fas fa-bars"></i>
-                            </button>
+                            <button type="button" id="sidebarCollapse" class="btn btn-primary"><i class="fas fa-bars"></i> Menu</button>
                         </div>
                     </nav>
                     <div id='calendar'></div>
