@@ -1,7 +1,7 @@
 <?php
     include "conexao.php";
-    
-    $json = array();
+    //possível solução para a filtragem de eventos
+    //SELECT * FROM items WHERE items.xml LIKE '%123456%'
     $query_events = "SELECT * FROM events";
     $resultado_events = mysqli_query($conn, $query_events);
     $eventos = array();

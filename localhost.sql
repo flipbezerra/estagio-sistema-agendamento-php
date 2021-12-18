@@ -29,30 +29,30 @@ CREATE TABLE `events` (
   `color` varchar(15) NOT NULL,
   `start` datetime NOT NULL,
   `end` datetime NOT NULL,
-  `status` boolean NOT NULL,
   `descricao` varchar(100) NOT NULL,
+  `status` boolean NOT NULL,
   `dataCadastro` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 --
--- Estrutura para tabela `usuário`
+-- Estrutura para tabela `usuários`
 --
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
   `usuario` text COLLATE utf8_unicode_ci NOT NULL,
   `senha` text COLLATE utf8_unicode_ci NOT NULL,
-  `ativado` tinyint(1) NOT NULL,
+  `ativado` boolean NOT NULL,
   `dataCadastro` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 --
 -- Despejando dados para a tabela `events`
 --
-INSERT INTO `events` (`id`, `title`, `color`, `start`, `end`, `status`, `descricao`, `dataCadastro`) VALUES
-(1, 'Quadra coberta', '#FFD700', '2021-12-15 00:00:00', '2021-12-16 00:00:00', false, '20180300012, Basquete com os alunos de SI.', now());
+INSERT INTO `events` (`id`, `title`, `color`, `start`, `end`, `descricao`, `status`, `dataCadastro`) VALUES
+(1, 'Anfiteatro', '#FFD700', '2021-12-15 00:00:00', '2021-12-16 00:00:00', '20180300012, Basquete com os alunos de SI.', false, now());
 --
 -- Despejando dados para a tabela `usuários`
 --
 INSERT INTO `usuario` (`id`, `usuario`, `senha`, `ativado`, `dataCadastro`) VALUES
-(1, 'admin@admin.com', 'admin', 0, now());
+(1, 'admin@admin.com', 'admin', true, now());
 --
 -- Índice da tabela `events`
 --

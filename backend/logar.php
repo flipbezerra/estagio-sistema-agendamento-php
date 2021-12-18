@@ -1,10 +1,10 @@
 <?php
     include "conexao.php";
     include "UsuarioModel.php";
-    
     session_start();
 
     if(isset($_SESSION['usuario'])){
+        //adicionar pagina do usuario
         header("Location: ../index_aut.php");
     }
 
@@ -20,5 +20,4 @@
     }else{
         header('Location: ../login.php?erro=1');
     }      
-
 ?>
