@@ -10,16 +10,18 @@ document.addEventListener('DOMContentLoaded', function () {
             center: 'title',
             right: 'dayGridMonth,listYear'
         },
+
         selectable: true,
         eventLimit: true,
-        events: 'backend/listar_eventos.php',
+
+        events: './backend/listar_eventos.php',
 
         extraParams: function () {
             return {
                 cachebuster: new Date().valueOf()
             };
         },
-        
+
         select: function (info) {
             $('#cadastrar #start').val(info.start.toLocaleString());
             $('#cadastrar #end').val(info.end.toLocaleString());
@@ -28,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         eventClick: function (info) {
             info.jsEvent.preventDefault();
-            $("#apagar_evento").attr("href", "backend/deletar_evento.php?id=" + info.event.id);
+            $("#apagar_evento").attr("href", "./backend/deletar_evento.php?id=" + info.event.id);
             $('#visualizar #id').text(info.event.id);
             $('#visualizar #id').val(info.event.id);
             $('#visualizar #title').text(info.event.title);
@@ -49,7 +51,7 @@ $(document).ready(function () {
         event.preventDefault();
         $.ajax({
             method: "POST",
-            url: "backend/criar_evento.php",
+            url: "./backend/criar_evento.php",
             data: new FormData(this),
             contentType: false,
             processData: false,
@@ -78,7 +80,7 @@ $(document).ready(function () {
         event.preventDefault();
         $.ajax({
             method: "POST",
-            url: "backend/editar_evento.php",
+            url: "./backend/aceitar_evento.php",
             data: new FormData(this),
             contentType: false,
             processData: false,
@@ -93,10 +95,10 @@ $(document).ready(function () {
         })
     });
 
-    $(".alert").fadeTo(3000, 500).slideUp(500, function(){
+    $(".alert").fadeTo(3000, 500).slideUp(500, function () {
         $(".alert").alert('close');
     });
-    
+
     $(document).ready(function () {
         $('#sidebarCollapse').on('click', function () {
             $('#sidebar').toggleClass('active');
