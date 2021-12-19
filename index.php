@@ -61,9 +61,9 @@
                                 <a href="index.php?cod=3"> Laboratórios</a>
                             </li>
                         </ul>
-                    </li>
+                    </li>      
                     <li>
-                        <a href="sobre.php">Sobre</a>
+                        <a href="sobre.php"><i class="fas fa-info-circle"></i> Sobre</a>
                     </li>
                     <li>
                         <a href="login.php"><i class="fa fa-user"></i> Login</a>

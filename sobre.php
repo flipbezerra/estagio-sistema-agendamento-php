@@ -34,21 +34,7 @@
                 <ul class="list-unstyled components">
                     <p>Universidade Federal do Acre</p>
                     <li>
-                        <a href="index_aut.php"><i class="fa fa-home"></i> Página Inicial</a>
-                    </li>
-                    <li class="active">
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-map"></i> Espaços</a>
-                        <ul class="collapse list-unstyled" id="homeSubmenu">
-                            <li>
-                                <a href="index.php?cod=1"> Áreas para eventos/conferências</a>
-                            </li>
-                            <li>
-                                <a href="index.php?cod=2"> Áreas para esportes</a>
-                            </li>
-                            <li>
-                                <a href="index.php?cod=3"> Laboratórios</a>
-                            </li>
-                        </ul>
+                        <a href="index.php"><i class="fa fa-home"></i> Página Inicial</a>
                     </li>
                     <li>
                         <a href="sobre.php"><i class="fas fa-info-circle"></i> Sobre</a>
