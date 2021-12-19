@@ -11,6 +11,7 @@ senha: admin
 -Correção de Erros
 detalhes do evento (descricao) não sendo mostrado direito ao clicar "ver solicitação"
 poder adicionar evento com data de fim igual ou menor que a data de inicio 
+"ver solicitação" continua ativo se sair por outro meio sem ser apertar "cancelar"
 
 -Tratamento de erros: 
 mensagem a quem apagar ou editar evento já apagado
