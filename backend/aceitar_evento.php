@@ -22,7 +22,7 @@
         $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Solicitação aprovada com sucesso! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
     } else 
     {
-        $retorna = ['sit' => false, 'msg' => '<div class="alert alert-success" role="alert">Erro ao aprovar solicitação. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'];
+        $retorna = ['sit' => false, 'msg' => '<div class="alert alert-danger" role="alert">Erro ao aprovar solicitação. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'];
     }
     
     header('Content-Type: application/json');

@@ -97,7 +97,7 @@ $(document).ready(function () {
         })
     });
 
-    $(".alert").fadeTo(3000, 500).slideUp(500, function () {
+    $(".alert").fadeTo(3000, 300).slideUp(300, function () {
         $(".alert").alert('close');
     });
 
