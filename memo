@@ -2,20 +2,18 @@ Conta Administrador:
 usuário: admin@admin.com
 senha: admin
 
-
+>Adicionar filtro ao clicar nos links de "homeSubmenu" sendo utilizando nesse filtro uma classe
 
 >Erros 
 >Administração em niveis (em andamento) 
 >Comentar 
 
-
-
--Correção de erros
-cor e datas do evento existente não aparecem no editar
-avisos aparecem por baixo do layout
+-Correção de Erros
+detalhes do evento (descricao) não sendo mostrado direito ao clicar "ver solicitação"
+poder adicionar evento com data de fim igual ou menor que a data de inicio 
 
 -Tratamento de erros: 
-apagar ou editar evento já apagado
+mensagem a quem apagar ou editar evento já apagado
 não inclusão de mudanças ou adições de eventos
 impedir usuarios de nivel baixo modificar eventos (em andamento) 
 
