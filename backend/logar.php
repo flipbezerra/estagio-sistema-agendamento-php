@@ -1,10 +1,11 @@
 <?php
     include "conexao.php";
     include "UsuarioModel.php";
+    /* Iniciando sessão */
     session_start();
 
-    if(isset($_SESSION['usuario'])){
-        //adicionar pagina do usuario
+    if(isset($_SESSION['usuario']))
+    {
         header("Location: ../index_aut.php");
     }
 
@@ -13,7 +14,8 @@
     $usuarioModel = new UsuarioModel($conn);
     $user = $usuarioModel->isValid($usuario,$senha);
 
-    if($user){
+    if($user)
+    {
         $usuario = ['id'=>$user->id,'usuario'=>$user->usuario];
         $_SESSION['usuario'] = $usuario;
         header("Location: ../index_aut.php");

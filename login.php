@@ -1,11 +1,18 @@
 <?php
     require_once "./backend/conexao.php";
+    
+    /* Iniciando sessão */
     session_start();
-    if(isset($_SESSION['usuario'])){
-        header("Location: index_aut.php");
+    /* Verificação de login | se existe redirecionar para index do admin */
+    if(isset($_SESSION['usuario']))
+    {
+        header('Location: index_aut.php');
     }
+    
+    mysqli_close($conn);
 ?>
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="pt-BR">
 
     <head>
@@ -17,55 +24,58 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <!-- Ícone UFAC -->
         <link rel="shortcut icon" type="image/x-icon" href="https://sistemas.ufac.br/home/wp-content/themes/sistemas/staticIndex/imagens/logo_ufac.gif">
-        <link rel="stylesheet" href="css/personalizado.css">
+        <!-- Formatação personalizada usando CSS -->
+        <link rel="stylesheet" href="./css/personalizado.css">
     </head>
 
     <body class="body-login">
         <div class="area">
             <div class="area-logo">
-
                 <a href="./">
                     <i class="fas fa-arrow-left area-btn-voltar" style="color: white"></i>
                 </a>
-                <img src="resources/ufac.png" id="img-logo-login" alt="logo">
 
+                <img src="resources/ufac.png" id="img-logo-login" alt="logo">
             </div>
+
             <div class="area-login">
                 <img src="resources/logo-user.png" id="img-user" alt="usuario">
-                <form action="backend/logar.php" method="post" class="formulario-login">
+                <!-- Formulário de login -->
+                <form action="./backend/logar.php" method="post" class="formulario-login">
                     <div class="col">
-
                         <label for="">Email</label>
-                        <input type="text" name="usuario" class="form-control" placeholder="Email">
+                        <input type="text" name="usuario" class="form-control" placeholder="Email" required="required">
 
                         <label for="">Senha</label>
-                        <input type="password" name="senha" class="form-control" placeholder="Senha">
+                        <input type="password" name="senha" class="form-control" placeholder="Senha" required="required">
+                        <!-- Verificação de erros -->
                         <?php
-                            if (isset($_GET['erro'])) {
-                                if ($_GET['erro'] == 1) {
+                            if (isset($_GET['erro'])) 
+                            {
+                                if ($_GET['erro'] == 1) 
+                                {
                         ?>
                         <div class="alert alert-danger mt-3 alert-dismissible">
                             <button type="button" class="close" data-dismiss="alert">&times;</button>
-                            <strong>Erro!</strong> Email ou senha inválidos.
+                            <strong>Erro!</strong> Email ou Senha inválidos.
                         </div>
                         <?php
                                 }
                             }
                         ?>
+
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary mt-5">
-                                Entrar
-                                <i class="fas fa-sign-in-alt"></i>
-                            </button>
+                            <button type="submit" class="btn btn-primary mt-5"> Entrar <i class="fas fa-sign-in-alt"></i></button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
-        <!-- Scripts -->
-        <!-- jQuery, Popper.js, Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <!-- JQuery Script -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <!-- Popper Script -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <!-- Bootstrap Script -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <!-- FontAwesome Scripts -->
         <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>

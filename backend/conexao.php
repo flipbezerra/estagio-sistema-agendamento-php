@@ -1,12 +1,12 @@
 <?php
-/* 
-	//fred server
+/* FRED SERVER 
     $host = 'localhost';
     $user = 'root';
     $password = 'fred123456';
     $db_name = 'projetoDois';
     $port = 21022;
 */
+/* SERVER LOCAL */
     $host = 'localhost';
     $user = 'root';
     $password = '';
