@@ -22,4 +22,5 @@
     }else{
         header('Location: ../login.php?erro=1');
     }      
+    mysqli_close($conn);
 ?>

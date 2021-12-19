@@ -25,4 +25,5 @@
         $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Erro ao deletar solicitação.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
         header("Location: ../index_aut.php");
     }
+    mysqli_close($conn);
 ?>

@@ -13,6 +13,10 @@ body {
     margin: 0 auto;
 }
 
+.row{
+    word-wrap: break-word;
+}
+
 .visevent {
     display: block;
 }

@@ -52,7 +52,7 @@
                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-map"></i> Espaços</a>
                         <ul class="collapse list-unstyled" id="homeSubmenu">
                             <li>
-                                <a href="index.php?cod=1"> Áreas para eventos/conferências</a>
+                                <a href="index.php?cod=1"> Áreas para eventos/convenções</a>
                             </li>
                             <li>
                                 <a href="index.php?cod=2"> Áreas para esportes</a>
@@ -142,10 +142,10 @@
                                 <div class="col-sm-10">
                                     <select name="title" class="form-control" id="title" required="required">
                                         <option value="" disabled selected hidden>Selecione um espaço...</option>
-                                        <optgroup label="Áreas para eventos/conferências">
+                                        <optgroup label="Áreas para eventos/convenções">
                                             <option value="Anfiteatro">Anfiteatro</option>
                                             <option value="Teatro">Teatro</option>
-                                            <option value="Sala de Conferências">Sala de Convenções</option>
+                                            <option value="Centro de Convenções">Centro de Convenções</option>
                                         </optgroup>
                                         <optgroup label="Áreas para esportes">
                                             <option value="Piscina">Piscina</option>
@@ -177,7 +177,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Detalhes: </label>
                                 <div class="col-sm-10">
-                                    <textarea name="descricao" class="form-control" id="descricao" rows="3" placeholder="Nº matrícula, atividade a ser realizada..." required="required"></textarea>
+                                    <input type="text" name="descricao" class="form-control" id="descricao" placeholder="Nº matrícula, atividade a ser realizada..." required="required">
                                 </div>
                             </div>
 

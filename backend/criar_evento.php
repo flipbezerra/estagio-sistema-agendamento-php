@@ -23,4 +23,5 @@
 
     header('Content-Type: application/json');
     echo json_encode($retorna);
+    mysqli_close($conn);
 ?>
