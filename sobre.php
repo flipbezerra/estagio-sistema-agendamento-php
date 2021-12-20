@@ -42,21 +42,13 @@
                 </ul>
             </nav>
             <div id="content">
-                <!-- Chama os alertas de alterações no banco de dados -->
-                <?php
-                    if (isset($_SESSION['msg'])) 
-                    {
-                        echo $_SESSION['msg'];
-                        unset($_SESSION['msg']);
-                    }
-                ?>
                 <!--Barra contendo o botão que expande/retrai o menu sidebar--> 
                 <nav class="navbar navbar-expand-lg">
                     <div class="container-fluid">
                         <button type="button" id="sidebarCollapse" class="btn btn-primary"><i class="fas fa-bars"></i> Menu</button>
                     </div>
                 </nav>
-                <!-- About section one-->
+                <!-- Informações sobre o website-->
                 <div class="container px-5 my-5">
                     <div class="row gx-5 align-items-left">
                         <div class="col-lg-10">
@@ -68,10 +60,16 @@
                             <p class="lead fw-normal text-muted mb-0"><a href="https://github.com/Bezerha">github.com/Bezerha</a></p>
                             <p class="lead fw-normal text-muted mb-0"><a href="https://github.com/vyctor922">github.com/vyctor922</a></p>
                             <p class="lead fw-normal text-muted mb-0"><a href="https://github.com/fredtavares2018">github.com/fredtavares2018</a></p>
-                            
+                            <h4 class="fw-bolder">Versão:</h4>
+                            <p class="lead fw-normal text-muted mb-0">2.5.1</p>
                         </div>
                     </div>
                 </div>
+                <footer class="main-footer p-5 mt-5">
+                    <div class="container">
+                        <strong>&copy; <?php echo date("Y"); ?> Felipe Bezerra Lima, Victor Alexandre Lima Ribeiro. All Rights reserved.</strong>
+                    </div>
+                </footer>
             </div>
         </div>
         <!-- JQuery Script -->

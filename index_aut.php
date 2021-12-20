@@ -94,6 +94,11 @@
                     </div>
                 </nav>
                 <div id='calendar'></div>
+                <footer class="main-footer p-5 mt-5">
+                    <div class="container">
+                        <strong>&copy; <?php echo date("Y"); ?> Felipe Bezerra Lima, Victor Alexandre Lima Ribeiro. All Rights reserved.</strong>
+                    </div>
+                </footer>
             </div>
         </div>
         <!-- Modal de visualização dos detalhes do evento -->
