@@ -34,15 +34,17 @@
     </head>
 
     <body>
-        <!-- Embrulha os objetos do website para que o menu sidebar e o conteúdo interajam corretamente -->
+        <!-- Embrulha os objetos do website para que interajam corretamente -->
         <div class="wrapper">
+            <!-- Menu sidebar -->
             <nav id="sidebar">
+                <!-- Título do menu lateral -->
                 <div class="sidebar-header">
                     <img id="logo" src="resources/ufac.png" alt="logo">
                     <br>
                     <h3>Agendamento de espaços</h3>
                 </div>
-
+                <!-- SubMenu contendo os filtros de visaalização da pagina -->
                 <ul class="list-unstyled components">
                     <p>Universidade Federal do Acre</p>
                     <li>
@@ -55,9 +57,11 @@
                             <li>
                                 <a href="index_aut.php?cod=1"> Áreas para eventos/convenções</a>
                             </li>
+
                             <li>
                                 <a href="index_aut.php?cod=2"> Áreas para esportes</a>
                             </li>
+
                             <li>
                                 <a href="index_aut.php?cod=3"> Laboratórios</a>
                             </li>
@@ -89,6 +93,7 @@
                         <button type="button" id="sidebarCollapse" class="btn btn-primary"><i class="fas fa-bars"></i> Menu</button>
                     </div>
                 </nav>
+                <!-- Carregamento do calendário -->
                 <div id='calendar'></div>
                 <!-- Rodapé da pagina -->
                 <footer class="main-footer p-4 mt-5">
@@ -278,11 +283,12 @@
         <!-- FontAwesome Scripts -->
         <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-        <!-- Script personalizado -->
+        <!-- Scripts personalizados -->
+        <script src="js/personalizado.js"></script>
         <script>
         document.addEventListener('DOMContentLoaded', function() {
+            /* Instruções javascript - carregamento personalizado do calendário */
             var calendarEl = document.getElementById('calendar');
-
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 locale: 'pt-br',
                 plugins: ['interaction', 'dayGrid', 'list', 'timegrid'],
@@ -291,10 +297,9 @@
                     center: 'title',
                     right: 'dayGridMonth,listYear'
                 },
-
                 selectable: true,
                 eventLimit: true,
-
+                /* Filtragem da escolha de visualização dos eventos */
                 <?php
                     if (!isset($_GET['cod']) OR $_GET['cod'] > 3)
                     {
@@ -318,19 +323,18 @@
                 <?php
                     }
                 ?>
-
+                /* Tratamento de erros */
                 extraParams: function() {
                     return {
                         cachebuster: new Date().valueOf()
                     };
                 },
-
+                /* Instruções javascript - tratamento e recebimento das informações do banco de dados do evento */
                 select: function(info) {
                     $('#cadastrar #start').val(info.start.toLocaleString());
                     $('#cadastrar #end').val(info.end.toLocaleString());
                     $('#cadastrar').modal('show');
                 },
-
                 eventClick: function(info) {
                     info.jsEvent.preventDefault();
                     $("#apagar_evento").attr("href", "./backend/deletar_evento.php?id=" + info.event.id);
@@ -348,67 +352,8 @@
                     $('#visualizar').modal('show');
                 },
             });
+            /* Renderização do calendario */
             calendar.render();
-        });
-
-        $(document).ready(function() {
-            $("#addevent").on("submit", function(event) {
-                event.preventDefault();
-                $.ajax({
-                    method: "POST",
-                    url: "./backend/criar_evento.php",
-                    data: new FormData(this),
-                    contentType: false,
-                    processData: false,
-
-                    success: function(retorna) {
-                        if (retorna['sit']) {
-                            location.reload();
-                        } else {
-                            $("#msg-add").html(retorna['msg']);
-                        }
-                    }
-                })
-            });
-
-            $('.btn-canc-vis').on("click", function() {
-                $('.visevent').slideToggle();
-                $('.formedit').slideToggle();
-            })
-
-            $('.btn-canc-edit').on("click", function() {
-                $('.formedit').slideToggle();
-                $('.visevent').slideToggle();
-            })
-
-            $("#editevent").on("submit", function(event) {
-                event.preventDefault();
-                $.ajax({
-                    method: "POST",
-                    url: "./backend/aceitar_evento.php",
-                    data: new FormData(this),
-                    contentType: false,
-                    processData: false,
-
-                    success: function(retorna) {
-                        if (retorna['sit']) {
-                            location.reload();
-                        } else {
-                            $("#msg-edit").html(retorna['msg']);
-                        }
-                    }
-                })
-            });
-
-            $(".alert").fadeTo(3000, 300).slideUp(300, function() {
-                $(".alert").alert('close');
-            });
-
-            $(document).ready(function() {
-                $('#sidebarCollapse').on('click', function() {
-                    $('#sidebar').toggleClass('active');
-                });
-            });
         });
         </script>
     </body>

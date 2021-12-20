@@ -17,23 +17,29 @@
     </head>
 
     <body class="d-flex flex-column">
+        <!-- Embrulha os objetos do website para que interajam corretamente -->
         <div class="wrapper">
+            <!-- Menu sidebar -->
             <nav id="sidebar">
+                <!-- Título do menu lateral -->
                 <div class="sidebar-header">
                     <img id="logo" src="resources/ufac.png" alt="logo">
                     <br>
                     <h3>Agendamento de espaços</h3>
                 </div>
+                <!-- SubMenu contendo os filtros de visaalização da pagina -->
                 <ul class="list-unstyled components">
                     <p>Universidade Federal do Acre</p>
                     <li>
                         <a href="index.php"><i class="fa fa-home"></i> Página Inicial</a>
                     </li>
+
                     <li>
                         <a href="sobre.php"><i class="fas fa-info-circle"></i> Sobre</a>
                     </li>
                 </ul>
             </nav>
+
             <div id="content">
                 <!-- Barra contendo o botão que expande/retrai o menu sidebar -->
                 <nav class="navbar navbar-expand-lg">
@@ -83,6 +89,8 @@
         <!-- FontAwesome Scripts -->
         <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+        <!-- Script personalizado -->
+        <script src="js/personalizado.js"></script>
     </body>
 
 </html>
