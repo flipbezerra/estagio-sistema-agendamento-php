@@ -9,26 +9,19 @@
             $this->conexao = $conexao;
         }
 
-        public function getUsuarios(): mysqli_result
+        public function getUsuarioId($id): object
         {
-            $sql = "SELECT * FROM usuario";
-            $res = mysqli_query($this->conexao, $sql) or die(mysqli_error($this->conexao));
-            return $res;
-        }
-
-        public function getUsuarioId($id):object
-        {
-            $sql = "SELECT * FROM usuario WHERE id= '$id'";
-            $res = mysqli_query($this->conexao, $sql) or die(mysqli_error($this->conexao));
-            $obj = mysqli_fetch_object($res);
+            $query_sql = "SELECT * FROM users WHERE id= '$id'";
+            $resultado_sql = mysqli_query($this->conexao, $query_sql) or die(mysqli_error($this->conexao));
+            $obj = mysqli_fetch_object($resultado_sql);
             return $obj;
         }
 
         public function isValid($usuario,$senha)
         {
-            $sql = "SELECT * FROM usuario WHERE usuario='$usuario' AND senha = '$senha'";
-            $res = mysqli_query($this->conexao,$sql) or die(mysqli_error($this->conexao));
-            $obj = mysqli_fetch_object($res);
+            $query_sql = "SELECT * FROM users WHERE user='$usuario' AND password='$senha'";
+            $resultado_sql = mysqli_query($this->conexao, $query_sql) or die(mysqli_error($this->conexao));
+            $obj = mysqli_fetch_object($resultado_sql);
             return $obj;
         }
     }

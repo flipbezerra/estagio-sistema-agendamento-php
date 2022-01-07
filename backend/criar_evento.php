@@ -14,9 +14,9 @@
     /* Tratamento de erro - impede horarios iguais data do fim do evento menor que a data de inicio criar um evento para antes da data atual */
     if($data_end_conv > $data_start_conv && $data_start_conv > date('Y-m-d H:i:s') && $data_end_conv > date('Y-m-d H:i:s')){
         /* Cria um statement de criação do MySQL, prepara para execução e atribui os parâmetros coletados no formulário corretamente */
-        $query = "INSERT INTO events (title, color, start, end, descricao, status, dataCadastro) VALUES (?, '#FFD700', ?, ?, ?, false, now())";
+        $query = "INSERT INTO events (title, color, start, end, description, status, dataCadastro) VALUES (?, '#FFD700', ?, ?, ?, false, now())";
         $stmt = mysqli_prepare($conn, $query);
-        mysqli_stmt_bind_param($stmt, "ssss", $dados['title'], $data_start_conv, $data_end_conv, $dados['descricao']);
+        mysqli_stmt_bind_param($stmt, "ssss", $dados['title'], $data_start_conv, $data_end_conv, $dados['description']);
         /* Executa o statement de criação do MySQL e emite um alerta na tela para função realizada com sucesso ou erro */
         if ($stmt->execute()) 
         {

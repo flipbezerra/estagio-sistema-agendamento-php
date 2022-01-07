@@ -38,15 +38,13 @@
     <body>
         <!-- Embrulha os objetos do website para que interajam corretamente -->
         <div class="wrapper">
-            <!-- Menu sidebar -->
             <nav id="sidebar">
-                <!-- Título do menu lateral -->
                 <div class="sidebar-header">
                     <img id="logo" src="resources/ufac.png" alt="logo">
                     <br>
                     <h3>Agendamento de espaços</h3>
                 </div>
-                <!-- SubMenu contendo os filtros de visaalização da pagina -->
+
                 <ul class="list-unstyled components">
                     <p>Universidade Federal do Acre</p>
                     <li>
@@ -77,11 +75,6 @@
                     <li>
                         <a href="login.php"><i class="fa fa-user"></i> Login</a>
                     </li>
-                    <!--
-                    <li id="logout">
-                        <a href="./backend/logout.php"><i class="fas fa-sign-out-alt"></i> Sair</a>
-                    </li>
-                    -->
                 </ul>
             </nav>
 
@@ -106,10 +99,8 @@
                 <footer class="main-footer p-4 mt-5">
                     <div class="container">
                         <div class="text-center">
-                            <b> Version </b> 2.3.1 <b> &copy; <?php echo date("Y"); ?> </b>
+                            Version <a href="https://github.com/Bezerha/Projeto-Agendamento"> 2.3.5 </a> &copy; 2022 NIEAD
                         </div>
-                        <br>
-                        <strong> Sistema desenvolvido por: Felipe Bezerra Lima, Victor Alexandre Lima Ribeiro. </strong>
                     </div>
                 </footer>
             </div>
@@ -201,7 +192,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Detalhes: </label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="descricao" class="form-control" id="descricao" placeholder="Nº matrícula, atividade a ser realizada..." required="required">
+                                    <input type="text" name="description" class="form-control" id="description" placeholder="Nº matrícula, atividade a ser realizada..." required="required">
                                 </div>
                             </div>
 
@@ -294,8 +285,8 @@
                     $('#visualizar #start').val(info.event.start.toLocaleString());
                     $('#visualizar #end').text(info.event.end.toLocaleString());
                     $('#visualizar #end').val(info.event.end.toLocaleString());
-                    $('#visualizar #descricao').text(info.event.extendedProps.descricao);
-                    $('#visualizar #descricao').val(info.event.extendedProps.descricao);
+                    $('#visualizar #description').text(info.event.extendedProps.description);
+                    $('#visualizar #description').val(info.event.extendedProps.description);
                     $('#visualizar #color').val(info.event.backgroundColor);
                     $('#visualizar').modal('show');
                 },

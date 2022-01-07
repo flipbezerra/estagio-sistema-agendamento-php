@@ -54,7 +54,7 @@ $(document).ready(function () {
         })
     });
     /* Instruções javascript - definição de limite de tempo para os alertas */
-    $(".alert").fadeTo(3000, 300).slideUp(300, function () {
+    $(".alert").fadeTo(4000, 300).slideUp(300, function () {
         $(".alert").alert('close');
     });
 });

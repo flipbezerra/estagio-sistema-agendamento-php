@@ -62,7 +62,7 @@
                             <p class="lead fw-normal text-muted mb-0"><a href="https://github.com/fredtavares2018">github.com/fredtavares2018</a></p>
                             <br>
                             <h4 class="fw-bolder">Versão:</h4>
-                            <p class="lead fw-normal text-muted mb-0">2.3.1</p>
+                            <p class="lead fw-normal text-muted mb-0">2.3.5</p>
                         </div>
                     </div>
                 </div>
@@ -70,10 +70,8 @@
                 <footer class="main-footer p-4 mt-5">
                     <div class="container">
                         <div class="text-center">
-                            <b> Version </b> 2.3.1 <b> &copy; <?php echo date("Y"); ?> </b>
+                            Version <a href="https://github.com/Bezerha/Projeto-Agendamento"> 2.3.5 </a> &copy; 2022 NIEAD
                         </div>
-                        <br>
-                        <strong> Sistema desenvolvido por: Felipe Bezerra Lima, Victor Alexandre Lima Ribeiro. </strong>
                     </div>
                 </footer>
             </div>

@@ -1,10 +1,7 @@
 Conta Administrador:
 usuário: admin@admin.com
-senha: admin
+senha: SenhaDaAdministracao
 
-> Administração em niveis (em andamento)
-> Botão "ver solicitação" continua ativo se sair por outro meio sem ser apertar "cancelar"
-> Tratamento de erros: 
-mensagem a quem apagar ou editar evento já apagado
-não inclusão de mudanças ou adições de eventos
 
+>falar que limite são 150 caracteres
+>botão de confirmação gerar um "tem certeza?"
