@@ -1,9 +1,11 @@
 <?php
+    /* Iniciando conexão com banco de dados */
     include "conexao.php";
+    
     include "UsuarioModel.php";
     /* Iniciando sessão */
     session_start();
-    /* Se o login já foi realizado, volta a página de usuário autenticado */
+    /* Verificação de login - se existe o redireciona a página de usuário autenticado */
     if(isset($_SESSION['usuario']))
     {
         header("Location: ../index_aut.php");
@@ -13,7 +15,7 @@
     $senha = $_POST['senha'];
     $usuarioModel = new UsuarioModel($conn);
     $user = $usuarioModel->isValid($usuario,$senha);
-        /* Tentar realizar uma autenticação utilizando os dados inseridos no formulário login*/
+    /* Tenta realizar uma autenticação utilizando os dados inseridos no formulário login */
     if($user)
     {
         $usuario = ['id'=>$user->id,'usuario'=>$user->usuario];
@@ -21,6 +23,7 @@
         header("Location: ../index_aut.php");
     }else{
         header('Location: ../login.php?erro=1');
-    }      
+    } 
+    /* Encerrando conexão com banco de dados */
     mysqli_close($conn);
 ?>

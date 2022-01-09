@@ -1,13 +1,14 @@
 <?php
+    /* Iniciando conexão com banco de dados */
     require_once './backend/conexao.php';
     /* Iniciando sessão */
     session_start();
-    /* Verificação de login | se existe redirecionar para index do admin */
+    /* Verificação de login | se existe o redireciona a página de usuário autenticado */
     if (isset($_SESSION['usuario']))
     {
         header('Location: index_aut.php');
     }
-    /* Fechando conexão */
+    /* Encerrando conexão com banco de dados */
     mysqli_close($conn);
 ?>
 
@@ -35,36 +36,44 @@
     </head>
 
     <body>
-        <!-- Embrulha os objetos do website para que o menu sidebar e o conteúdo interajam corretamente-->
+        <!-- Embrulha os objetos do website para que interajam corretamente -->
         <div class="wrapper">
+            <!-- Menu sidebar -->
             <nav id="sidebar">
+                <!-- Título do menu lateral -->
                 <div class="sidebar-header">
                     <img id="logo" src="resources/ufac.png" alt="logo">
                     <br>
                     <h3>Agendamento de espaços</h3>
                 </div>
+                <!-- SubMenu contendo os filtros de visaalização da pagina -->
                 <ul class="list-unstyled components">
                     <p>Universidade Federal do Acre</p>
                     <li>
                         <a href="./"><i class="fa fa-home"></i> Página Inicial</a>
                     </li>
+
                     <li class="active">
                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-map"></i> Espaços</a>
                         <ul class="collapse list-unstyled" id="homeSubmenu">
                             <li>
                                 <a href="index.php?cod=1"> Áreas para eventos/convenções</a>
                             </li>
+
                             <li>
                                 <a href="index.php?cod=2"> Áreas para esportes</a>
                             </li>
+
                             <li>
                                 <a href="index.php?cod=3"> Laboratórios</a>
                             </li>
                         </ul>
-                    </li>      
+                    </li>
+
                     <li>
                         <a href="sobre.php"><i class="fas fa-info-circle"></i> Sobre</a>
                     </li>
+
                     <li>
                         <a href="login.php"><i class="fa fa-user"></i> Login</a>
                     </li>
@@ -75,6 +84,7 @@
                     -->
                 </ul>
             </nav>
+
             <div id="content">
                 <!-- Chama os alertas de alterações no banco de dados -->
                 <?php
@@ -84,16 +94,22 @@
                         unset($_SESSION['msg']);
                     }
                 ?>
-                <!--Barra contendo o botão que expande/retrai o menu sidebar--> 
+                <!--Barra contendo o botão que expande/retrai o menu sidebar-->
                 <nav class="navbar navbar-expand-lg">
                     <div class="container-fluid">
                         <button type="button" id="sidebarCollapse" class="btn btn-primary"><i class="fas fa-bars"></i> Menu</button>
                     </div>
                 </nav>
+                <!-- Carregamento do calendário -->
                 <div id='calendar'></div>
-                <footer class="main-footer p-5 mt-5">
+                <!-- Rodapé da pagina -->
+                <footer class="main-footer p-4 mt-5">
                     <div class="container">
-                        <strong>&copy; <?php echo date("Y"); ?> Felipe Bezerra Lima, Victor Alexandre Lima Ribeiro. All Rights reserved.</strong>
+                        <div class="text-center">
+                            <b> Version </b> 2.3.1 <b> &copy; <?php echo date("Y"); ?> </b>
+                        </div>
+                        <br>
+                        <strong> Sistema desenvolvido por: Felipe Bezerra Lima, Victor Alexandre Lima Ribeiro. </strong>
                     </div>
                 </footer>
             </div>
@@ -147,16 +163,19 @@
                                 <div class="col-sm-10">
                                     <select name="title" class="form-control" id="title" required="required">
                                         <option value="" disabled selected hidden>Selecione um espaço...</option>
+
                                         <optgroup label="Áreas para eventos/convenções">
                                             <option value="Anfiteatro">Anfiteatro</option>
                                             <option value="Teatro">Teatro</option>
                                             <option value="Centro de Convenções">Centro de Convenções</option>
                                         </optgroup>
+
                                         <optgroup label="Áreas para esportes">
                                             <option value="Piscina">Piscina</option>
                                             <option value="Quadra de Areia">Quadra de Areia</option>
                                             <option value="Quadra Coberta">Quadra Coberta</option>
                                         </optgroup>
+
                                         <optgroup label="Laboratórios">
                                             <option value="Laboratório de Informática">Laboratório de Informática</option>
                                             <option value="Laboratório de Agronomia">Laboratório de Agronomia</option>
@@ -212,8 +231,79 @@
         <!-- FontAwesome Scripts -->
         <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-        <!-- Scripts personalizados -->      
+        <!-- Scripts personalizados -->
         <script src="js/personalizado.js"></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            /* Instruções javascript - carregamento personalizado do calendário */
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                locale: 'pt-br',
+                plugins: ['interaction', 'dayGrid', 'list', 'timegrid'],
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,listYear'
+                },
+                selectable: true,
+                eventLimit: true,
+                /* Filtragem da escolha de visualização dos eventos */
+                <?php
+                    if (!isset($_GET['cod']) OR $_GET['cod'] > 3)
+                    {
+                ?>
+                events: './backend/listar_eventos.php',
+                <?php
+                    }elseif ($_GET['cod'] == 1) 
+                    {
+                ?>
+                events: './backend/listar_eventos-1.php',
+                <?php
+                    }elseif ($_GET['cod'] == 2) 
+                    {
+                ?>
+                events: './backend/listar_eventos-2.php',
+                <?php
+                    }elseif ($_GET['cod'] == 3) 
+                    {
+                ?>
+                events: './backend/listar_eventos-3.php',
+                <?php
+                    }
+                ?>
+                /* Tratamento de erros */
+                extraParams: function() {
+                    return {
+                        cachebuster: new Date().valueOf()
+                    };
+                },
+                /* Instruções javascript - tratamento e recebimento das informações do banco de dados do evento */
+                select: function(info) {
+                    $('#cadastrar #start').val(info.start.toLocaleString());
+                    $('#cadastrar #end').val(info.end.toLocaleString());
+                    $('#cadastrar').modal('show');
+                },
+                eventClick: function(info) {
+                    info.jsEvent.preventDefault();
+                    $("#apagar_evento").attr("href", "./backend/deletar_evento.php?id=" + info.event.id);
+                    $('#visualizar #id').text(info.event.id);
+                    $('#visualizar #id').val(info.event.id);
+                    $('#visualizar #title').text(info.event.title);
+                    $('#visualizar #title').val(info.event.title);
+                    $('#visualizar #start').text(info.event.start.toLocaleString());
+                    $('#visualizar #start').val(info.event.start.toLocaleString());
+                    $('#visualizar #end').text(info.event.end.toLocaleString());
+                    $('#visualizar #end').val(info.event.end.toLocaleString());
+                    $('#visualizar #descricao').text(info.event.extendedProps.descricao);
+                    $('#visualizar #descricao').val(info.event.extendedProps.descricao);
+                    $('#visualizar #color').val(info.event.backgroundColor);
+                    $('#visualizar').modal('show');
+                },
+            });
+            /* Renderização do calendario */
+            calendar.render();
+        });
+        </script>
     </body>
 
 </html>

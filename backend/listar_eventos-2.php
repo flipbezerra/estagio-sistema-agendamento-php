@@ -2,7 +2,7 @@
     /* Iniciando conexão com banco de dados */
     include "conexao.php";
     /*Cria um statement de exibição do MySQL, realiza uma consulta e insere os dados coletados nessa consulta em um array*/
-    $query_events = "SELECT * FROM events";
+    $query_events = "SELECT * FROM events WHERE title LIKE '%Quadra%' OR title LIKE '%Piscina%'";
     $resultado_events = mysqli_query($conn, $query_events);
     $eventos = array();
 

@@ -1,54 +1,12 @@
-document.addEventListener('DOMContentLoaded', function () {
-    var calendarEl = document.getElementById('calendar');
-
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-        locale: 'pt-br',
-        plugins: ['interaction', 'dayGrid', 'list', 'timegrid'],
-        header:
-        {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'dayGridMonth,listYear'
-        },
-
-        selectable: true,
-        eventLimit: true,
-
-        events: './backend/listar_eventos.php',
-
-        extraParams: function () {
-            return {
-                cachebuster: new Date().valueOf()
-            };
-        },
-
-        select: function (info) {
-            $('#cadastrar #start').val(info.start.toLocaleString());
-            $('#cadastrar #end').val(info.end.toLocaleString());
-            $('#cadastrar').modal('show');
-        },
-
-        eventClick: function (info) {
-            info.jsEvent.preventDefault();
-            $("#apagar_evento").attr("href", "./backend/deletar_evento.php?id=" + info.event.id);
-            $('#visualizar #id').text(info.event.id);
-            $('#visualizar #id').val(info.event.id);
-            $('#visualizar #title').text(info.event.title);
-            $('#visualizar #title').val(info.event.title);
-            $('#visualizar #start').text(info.event.start.toLocaleString());
-            $('#visualizar #start').val(info.event.start.toLocaleString());
-            $('#visualizar #end').text(info.event.end.toLocaleString());
-            $('#visualizar #end').val(info.event.end.toLocaleString());
-            $('#visualizar #descricao').text(info.event.extendedProps.descricao);
-            $('#visualizar #descricao').val(info.event.extendedProps.descricao);
-            $('#visualizar #color').val(info.event.backgroundColor);
-            $('#visualizar').modal('show');
-        },
+$(document).ready(function () {
+    /* Instruções javascript - funcionamento do botão que expande/retrai o menu sidebar */
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
     });
-    calendar.render();
 });
 
 $(document).ready(function () {
+    /* Instruções javascript - tratamento e envio das informações de cadastro do evento para o banco de dados */
     $("#addevent").on("submit", function (event) {
         event.preventDefault();
         $.ajax({
@@ -57,7 +15,7 @@ $(document).ready(function () {
             data: new FormData(this),
             contentType: false,
             processData: false,
-
+            /* Instruções javascript - Alertas de alterações no banco de dados */
             success: function (retorna) {
                 if (retorna['sit']) {
                     location.reload();
@@ -67,17 +25,16 @@ $(document).ready(function () {
             }
         })
     });
-
+    /* Instruções javascript - funcionamento dos botões que expandem/retraem o modal de aprovação/visaulização do evento */
     $('.btn-canc-vis').on("click", function () {
         $('.visevent').slideToggle();
         $('.formedit').slideToggle();
     })
-
     $('.btn-canc-edit').on("click", function () {
         $('.formedit').slideToggle();
         $('.visevent').slideToggle();
     })
-
+    /* Instruções javascript - tratamento e envio das informações de edição do evento para o banco de dados */
     $("#editevent").on("submit", function (event) {
         event.preventDefault();
         $.ajax({
@@ -86,7 +43,7 @@ $(document).ready(function () {
             data: new FormData(this),
             contentType: false,
             processData: false,
-
+            /* Instruções javascript - Alertas de alterações no banco de dados */
             success: function (retorna) {
                 if (retorna['sit']) {
                     location.reload();
@@ -96,14 +53,8 @@ $(document).ready(function () {
             }
         })
     });
-
+    /* Instruções javascript - definição de limite de tempo para os alertas */
     $(".alert").fadeTo(3000, 300).slideUp(300, function () {
         $(".alert").alert('close');
-    });
-
-    $(document).ready(function () {
-        $('#sidebarCollapse').on('click', function () {
-            $('#sidebar').toggleClass('active');
-        });
     });
 });

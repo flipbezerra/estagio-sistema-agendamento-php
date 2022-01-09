@@ -2,17 +2,10 @@
 <html lang="pt-BR">
 
     <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
         <title>Sobre - Sistema de Agendamentos - UFAC</title>
         <!-- Required meta tags -->
         <meta charset='utf-8' />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-        <!-- FullCalendar CSS -->
-        <link href='./css/core.css' rel='stylesheet' />
-        <link href='./css/daygrid.css' rel='stylesheet' />
-        <link href='./css/daygrid.css' rel='stylesheet' />
-        <link href='./css/list.css' rel='stylesheet' />
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <!-- Scrollbar Custom CSS -->
@@ -24,31 +17,37 @@
     </head>
 
     <body class="d-flex flex-column">
+        <!-- Embrulha os objetos do website para que interajam corretamente -->
         <div class="wrapper">
+            <!-- Menu sidebar -->
             <nav id="sidebar">
+                <!-- Título do menu lateral -->
                 <div class="sidebar-header">
                     <img id="logo" src="resources/ufac.png" alt="logo">
                     <br>
                     <h3>Agendamento de espaços</h3>
                 </div>
+                <!-- SubMenu contendo os filtros de visaalização da pagina -->
                 <ul class="list-unstyled components">
                     <p>Universidade Federal do Acre</p>
                     <li>
                         <a href="index.php"><i class="fa fa-home"></i> Página Inicial</a>
                     </li>
+
                     <li>
                         <a href="sobre.php"><i class="fas fa-info-circle"></i> Sobre</a>
                     </li>
                 </ul>
             </nav>
+
             <div id="content">
-                <!--Barra contendo o botão que expande/retrai o menu sidebar--> 
+                <!-- Barra contendo o botão que expande/retrai o menu sidebar -->
                 <nav class="navbar navbar-expand-lg">
                     <div class="container-fluid">
                         <button type="button" id="sidebarCollapse" class="btn btn-primary"><i class="fas fa-bars"></i> Menu</button>
                     </div>
                 </nav>
-                <!-- Informações sobre o website-->
+                <!-- Informações sobre o website -->
                 <div class="container px-5 my-5">
                     <div class="row gx-5 align-items-left">
                         <div class="col-lg-10">
@@ -56,18 +55,25 @@
                             <p class="lead fw-normal text-muted mb-0">Para solicitar o uso de um espaço, clique em qualquer dia no calendário, preencha o formulário e aguarde a aprovação do administrador.</p>
                             <p class="lead fw-normal text-muted mb-0">Solicitações com aprovação pendente estão no calendário em cor <span style="color: #FFD700">amarela</span> e as aprovadas estão em <span style="color: #00D100">verde</span>.</p>
                             <p class="lead fw-normal text-muted mb-0">Elaborado pelos alunos do curso de Sistemas de Informação, Felipe Bezerra Lima e Victor Alexandre Lima Ribeiro, e supervisionado pelo professor Frederico Tavares.</p>
+                            <br>
                             <h4 class="fw-bolder">Contato:</h4>
                             <p class="lead fw-normal text-muted mb-0"><a href="https://github.com/Bezerha">github.com/Bezerha</a></p>
                             <p class="lead fw-normal text-muted mb-0"><a href="https://github.com/vyctor922">github.com/vyctor922</a></p>
                             <p class="lead fw-normal text-muted mb-0"><a href="https://github.com/fredtavares2018">github.com/fredtavares2018</a></p>
+                            <br>
                             <h4 class="fw-bolder">Versão:</h4>
-                            <p class="lead fw-normal text-muted mb-0">2.5.1</p>
+                            <p class="lead fw-normal text-muted mb-0">2.3.1</p>
                         </div>
                     </div>
                 </div>
-                <footer class="main-footer p-5 mt-5">
+                <!-- Rodapé da pagina -->
+                <footer class="main-footer p-4 mt-5">
                     <div class="container">
-                        <strong>&copy; <?php echo date("Y"); ?> Felipe Bezerra Lima, Victor Alexandre Lima Ribeiro. All Rights reserved.</strong>
+                        <div class="text-center">
+                            <b> Version </b> 2.3.1 <b> &copy; <?php echo date("Y"); ?> </b>
+                        </div>
+                        <br>
+                        <strong> Sistema desenvolvido por: Felipe Bezerra Lima, Victor Alexandre Lima Ribeiro. </strong>
                     </div>
                 </footer>
             </div>
@@ -83,7 +89,7 @@
         <!-- FontAwesome Scripts -->
         <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-        <!-- Scripts personalizados -->
+        <!-- Script personalizado -->
         <script src="js/personalizado.js"></script>
     </body>
 

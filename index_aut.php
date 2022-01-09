@@ -1,16 +1,13 @@
 <?php
+    /* Iniciando conexão com banco de dados */
     include './backend/conexao.php';
     /* Iniciando sessão */
     session_start();
-    /* Verificação de login | se não existe redirecionar para login */
+    /* Verificação de login | se não existe o redireciona a página de login */
     if (!isset($_SESSION['usuario']))
     {
         header('Location: login.php');
     }
-    /*Array contendo os eventos para que os seus atributos possam ser exibidos*/
-    $query_listar = "SELECT * FROM events";
-    $buscar_events = mysqli_query($conn, $query_listar);
-    $retorno_events = mysqli_fetch_array($buscar_events);
 ?>
 
 <!DOCTYPE html>
@@ -37,47 +34,50 @@
     </head>
 
     <body>
-        <!-- Embrulha os objetos do website para que o menu sidebar e o conteúdo interajam corretamente-->
+        <!-- Embrulha os objetos do website para que interajam corretamente -->
         <div class="wrapper">
+            <!-- Menu sidebar -->
             <nav id="sidebar">
+                <!-- Título do menu lateral -->
                 <div class="sidebar-header">
                     <img id="logo" src="resources/ufac.png" alt="logo">
                     <br>
                     <h3>Agendamento de espaços</h3>
                 </div>
+                <!-- SubMenu contendo os filtros de visaalização da pagina -->
                 <ul class="list-unstyled components">
                     <p>Universidade Federal do Acre</p>
                     <li>
                         <a href="index_aut.php"><i class="fa fa-home"></i> Página Inicial</a>
                     </li>
+
                     <li class="active">
                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-map"></i> Espaços</a>
                         <ul class="collapse list-unstyled" id="homeSubmenu">
                             <li>
-                                <a href="index.php?cod=1"> Áreas para eventos/convenções</a>
+                                <a href="index_aut.php?cod=1"> Áreas para eventos/convenções</a>
                             </li>
+
                             <li>
-                                <a href="index.php?cod=2"> Áreas para esportes</a>
+                                <a href="index_aut.php?cod=2"> Áreas para esportes</a>
                             </li>
+
                             <li>
-                                <a href="index.php?cod=3"> Laboratórios</a>
+                                <a href="index_aut.php?cod=3"> Laboratórios</a>
                             </li>
                         </ul>
                     </li>
+
                     <li>
                         <a href="sobre.php"><i class="fas fa-info-circle"></i> Sobre</a>
                     </li>
-                    <!--
-                    <li>
-                        <a href="login.php"><i class="fa fa-user"></i> Login</a>
-                    </li>
-                    -->
+
                     <li id="logout">
                         <a href="./backend/logout.php"><i class="fas fa-sign-out-alt"></i> Sair</a>
                     </li>
                 </ul>
             </nav>
-            
+
             <div id="content">
                 <!-- Chama os alertas de alterações no banco de dados -->
                 <?php
@@ -87,16 +87,22 @@
                         unset($_SESSION['msg']);
                     }
                 ?>
-                <!--Barra contendo o botão que expande/retrai o menu sidebar--> 
+                <!-- Barra contendo o botão que expande/retrai o menu sidebar -->
                 <nav class="navbar navbar-expand-lg">
                     <div class="container-fluid">
                         <button type="button" id="sidebarCollapse" class="btn btn-primary"><i class="fas fa-bars"></i> Menu</button>
                     </div>
                 </nav>
+                <!-- Carregamento do calendário -->
                 <div id='calendar'></div>
-                <footer class="main-footer p-5 mt-5">
+                <!-- Rodapé da pagina -->
+                <footer class="main-footer p-4 mt-5">
                     <div class="container">
-                        <strong>&copy; <?php echo date("Y"); ?> Felipe Bezerra Lima, Victor Alexandre Lima Ribeiro. All Rights reserved.</strong>
+                        <div class="text-center">
+                            <b> Version </b> 2.3.1 <b> &copy; <?php echo date("Y"); ?> </b>
+                        </div>
+                        <br>
+                        <strong> Sistema desenvolvido por: Felipe Bezerra Lima, Victor Alexandre Lima Ribeiro. </strong>
                     </div>
                 </footer>
             </div>
@@ -137,38 +143,39 @@
                             <span id="msg-edit"></span>
                             <form id="editevent" method="POST" enctype="multipart/form-data">
                                 <input type="hidden" name="id" id="id">
-                                <!--
+
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Espaço: </label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="title" class="form-control" id="title" value="<?php echo $retorno_events['title']; ?>" disabled>
+                                        <input type="text" name="title" class="form-control" id="title" placeholder="Título do evento" disabled>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Início da reserva: </label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="start" class="form-control" id="start" value="<?php echo $retorno_events['start']; ?>" disabled>
+                                        <input type="text" name="start" class="form-control" id="start" placeholder="start" disabled>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Fim da reserva: </label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="end" class="form-control" id="end" value="<?php echo $retorno_events['end']; ?>" disabled>
+                                        <input type="text" name="end" class="form-control" id="end" placeholder="end" disabled>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Detalhes: </label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="descricao" class="form-control" id="descricao" disabled><?php echo $retorno_events['descricao']; ?>
+                                        <input type="text" name="descricao" class="form-control" id="descricao" placeholder="descricao" disabled>
                                     </div>
                                 </div>
-                                -->
+
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Solicitação aprovada: </label>
                                     <div class="col-sm-10">
+                                        <br>
                                         <input type="hidden" name="status" id="status" value="0">
                                         <input type="checkbox" name="status" id="status" value="1">
                                     </div>
@@ -247,7 +254,7 @@
                                     <input type="text" name="descricao" class="form-control" id="descricao" placeholder="Nº matrícula, atividade a ser realizada..." required="required">
                                 </div>
                             </div>
-                            
+
                             <div class="form-group row">
                                 <div class="col-sm-10">
                                     <button type="submit" name="AddEvent" id="AddEvent" value="AddEvent" class="btn btn-success">Solicitar</button>
@@ -278,11 +285,82 @@
         <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
         <!-- Scripts personalizados -->
         <script src="js/personalizado.js"></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            /* Instruções javascript - carregamento personalizado do calendário */
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                locale: 'pt-br',
+                plugins: ['interaction', 'dayGrid', 'list', 'timegrid'],
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,listYear'
+                },
+                selectable: true,
+                eventLimit: true,
+                /* Filtragem da escolha de visualização dos eventos */
+                <?php
+                    if (!isset($_GET['cod']) OR $_GET['cod'] > 3)
+                    {
+                ?>
+                events: './backend/listar_eventos.php',
+                <?php
+                    }elseif ($_GET['cod'] == 1) 
+                    {
+                ?>
+                events: './backend/listar_eventos-1.php',
+                <?php
+                    }elseif ($_GET['cod'] == 2) 
+                    {
+                ?>
+                events: './backend/listar_eventos-2.php',
+                <?php
+                    }elseif ($_GET['cod'] == 3) 
+                    {
+                ?>
+                events: './backend/listar_eventos-3.php',
+                <?php
+                    }
+                ?>
+                /* Tratamento de erros */
+                extraParams: function() {
+                    return {
+                        cachebuster: new Date().valueOf()
+                    };
+                },
+                /* Instruções javascript - tratamento e recebimento das informações do banco de dados do evento */
+                select: function(info) {
+                    $('#cadastrar #start').val(info.start.toLocaleString());
+                    $('#cadastrar #end').val(info.end.toLocaleString());
+                    $('#cadastrar').modal('show');
+                },
+                eventClick: function(info) {
+                    info.jsEvent.preventDefault();
+                    $("#apagar_evento").attr("href", "./backend/deletar_evento.php?id=" + info.event.id);
+                    $('#visualizar #id').text(info.event.id);
+                    $('#visualizar #id').val(info.event.id);
+                    $('#visualizar #title').text(info.event.title);
+                    $('#visualizar #title').val(info.event.title);
+                    $('#visualizar #start').text(info.event.start.toLocaleString());
+                    $('#visualizar #start').val(info.event.start.toLocaleString());
+                    $('#visualizar #end').text(info.event.end.toLocaleString());
+                    $('#visualizar #end').val(info.event.end.toLocaleString());
+                    $('#visualizar #descricao').text(info.event.extendedProps.descricao);
+                    $('#visualizar #descricao').val(info.event.extendedProps.descricao);
+                    $('#visualizar #color').val(info.event.backgroundColor);
+                    $('#visualizar').modal('show');
+                },
+            });
+            /* Renderização do calendario */
+            calendar.render();
+        });
+        </script>
     </body>
 
 </html>
 
 <?php
-    /* Fechando conexão */
+    /* Encerrando conexão com banco de dados */
     mysqli_close($conn);
 ?>

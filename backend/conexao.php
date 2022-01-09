@@ -12,7 +12,7 @@
     $password = '';
     $db_name = 'projetoDois';
     $port = 3306;
-    
+
     $conn = mysqli_connect($host, $user, $password, $db_name, $port);
 
     if (mysqli_connect_errno()) {

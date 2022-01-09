@@ -1,13 +1,14 @@
 <?php
+    /* Iniciando conexão com banco de dados */
     require_once "./backend/conexao.php";
     /* Iniciando sessão */
     session_start();
-    /* Verificação de login | se existe redirecionar para index do admin */
+    /* Verificação de login - se existe o redireciona a página de usuário autenticado */
     if(isset($_SESSION['usuario']))
     {
         header('Location: index_aut.php');
     }
-    /* Fechando conexão */
+    /* Encerrando conexão com banco de dados */
     mysqli_close($conn);
 ?>
 
@@ -19,7 +20,7 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-        <!-- FullCalendar CSS -->
+        <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <!-- Ícone UFAC -->
         <link rel="shortcut icon" type="image/x-icon" href="https://sistemas.ufac.br/home/wp-content/themes/sistemas/staticIndex/imagens/logo_ufac.gif">
@@ -28,6 +29,7 @@
     </head>
 
     <body class="body-login">
+        <!-- Enclausura os objetos dentro de uma área do website e os separa em subáreas para que interajam corretamente -->
         <div class="area">
             <div class="area-logo">
                 <a href="./">
